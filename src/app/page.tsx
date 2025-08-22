@@ -4,8 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { HeroSection, DeliveryInfo } from '@/components/home'
 import { ProductModal, ProductGrid, CategoryFilter } from '@/components/products'
 import { useCartStore } from '@/lib/stores/cart-store'
-import { products } from '@/lib/data'
-import { Product } from '@/lib/data'
+import { products, Product } from '@/lib/data'
 import { useSearch } from '@/lib/contexts/search-context' // Импортируем хук
 
 export default function Home() {

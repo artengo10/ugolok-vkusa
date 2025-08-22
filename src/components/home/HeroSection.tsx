@@ -12,7 +12,7 @@ export default function HeroSection({ onMenuClick }: HeroSectionProps) {
         <section className="relative min-h-[600px] md:min-h-[800px] flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/baner/banner.logo.jpg"
+                    src="/banner/banner.logo.jpg"
                     alt="Уютное кафе Уголок вкуса"
                     fill
                     className="object-cover scale-125 transform"

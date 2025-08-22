@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react'
 import { Search, X } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { Product } from '@/lib/data/products.types'
-import { products } from '@/lib/data'
-import { Button } from '@/components/ui/button'
+import { Product, products } from '@/lib/data'
+
 
 interface SearchDialogProps {
     open: boolean
