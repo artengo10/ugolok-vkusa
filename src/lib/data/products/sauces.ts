@@ -1,0 +1,68 @@
+import { Product } from "../products.types";
+
+export const saucesProducts: Product[] = [
+  {
+    id: 108,
+    name: "Кетчуп",
+    price: 50,
+    description: "Порция томатного кетчупа.",
+    category: "sauces",
+    image: "/images/products/sauces/ketchup.jpg",
+  },
+  {
+    id: 109,
+    name: "Сырный соус",
+    price: 60,
+    description: "Нежный сливочно-сырный соус.",
+    category: "sauces",
+    image: "/images/products/sauces/cheese_sauce.jpg",
+  },
+  {
+    id: 110,
+    name: "Соус чили",
+    price: 60,
+    description: "Острый соус чили.",
+    category: "sauces",
+    image: "/images/products/sauces/chili_sauce.jpg",
+  },
+  {
+    id: 111,
+    name: "Соус барбекю",
+    price: 60,
+    description: "Копченый соус барбекю.",
+    category: "sauces",
+    image: "/images/products/sauces/bbq_sauce.jpg",
+  },
+  {
+    id: 112,
+    name: "Чесночный соус",
+    price: 60,
+    description: "Нежный чесночный соус.",
+    category: "sauces",
+    image: "/images/products/sauces/garlic_sauce.jpg",
+  },
+  {
+    id: 113,
+    name: "Соус терияки",
+    price: 70,
+    description: "Сладко-соленый соус терияки.",
+    category: "sauces",
+    image: "/images/products/sauces/teriyaki_sauce.jpg",
+  },
+  {
+    id: 114,
+    name: "Кисло-сладкий соус",
+    price: 60,
+    description: "Традиционный кисло-сладкий соус.",
+    category: "sauces",
+    image: "/images/products/sauces/sweet_sour.jpg",
+  },
+  {
+    id: 115,
+    name: "Горчица",
+    price: 40,
+    description: "Острая столовая горчица.",
+    category: "sauces",
+    image: "/images/products/sauces/mustard.jpg",
+  },
+];

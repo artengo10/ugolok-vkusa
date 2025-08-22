@@ -1,0 +1,60 @@
+import { Product } from "../products.types";
+
+export const dessertsProducts: Product[] = [
+  {
+    id: 86,
+    name: "Мороженое пломбир",
+    price: 120,
+    description: "Шарик настоящего пломбира в вафельном стаканчике.",
+    category: "desserts",
+    image: "/images/products/desserts/ice_cream.jpg",
+  },
+  {
+    id: 87,
+    name: "Чизкейк",
+    price: 250,
+    description: "Нежный чизкейк Нью-Йорк на песочной основе.",
+    category: "desserts",
+    image: "/images/products/desserts/cheesecake.jpg",
+  },
+  {
+    id: 88,
+    name: "Тирамису",
+    price: 270,
+    description: "Классический итальянский десерт с кофейной пропиткой.",
+    category: "desserts",
+    image: "/images/products/desserts/tiramisu.jpg",
+  },
+  {
+    id: 89,
+    name: "Медовик",
+    price: 230,
+    description: "Нежный медовый торт со сметанным кремом.",
+    category: "desserts",
+    image: "/images/products/desserts/medovik.jpg",
+  },
+  {
+    id: 90,
+    name: "Эклер",
+    price: 150,
+    description: "Заварное пирожное с заварным кремом.",
+    category: "desserts",
+    image: "/images/products/desserts/eclair.jpg",
+  },
+  {
+    id: 91,
+    name: "Макарун",
+    price: 180,
+    description: "Нежное воздушное пирожное с начинкой.",
+    category: "desserts",
+    image: "/images/products/desserts/macaroon.jpg",
+  },
+  {
+    id: 92,
+    name: "Шоколадный торт",
+    price: 280,
+    description: "Влажный шоколадный торт с шоколадной глазурью.",
+    category: "desserts",
+    image: "/images/products/desserts/chocolate_cake.jpg",
+  },
+];
