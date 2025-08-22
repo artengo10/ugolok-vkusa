@@ -111,9 +111,10 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-4">
               <div className="relative w-23 h-18">
                 <Image
-                  src="/logo.png"
+                  src="/logo.jpg"
                   alt="Кафе Уголок Вкуса"
                   fill
+                  priority={true}
                   className="object-contain"
                 />
               </div>
