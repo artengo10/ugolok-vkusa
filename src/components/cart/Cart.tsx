@@ -38,16 +38,8 @@ export default function Cart({ open, onOpenChange }: CartProps) {
         setFormData(prev => ({ ...prev, [name]: value }))
     }
 
-    const handleOrder = () => {
-        const order = {
-            type: orderType,
-            items,
-            customer: formData,
-            total: total,
-            prepayment: prepayment,
-            finalTotal: finalTotal
-        }
 
+    const handleOrder = () => {
         // Уведомление с информацией о предоплате
         if (prepayment > 0) {
             showToast.info(`Требуется предоплата: ${prepayment}₽`);

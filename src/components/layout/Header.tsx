@@ -1,5 +1,7 @@
 'use client'
 
+
+import { Product } from '@/lib/data'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -39,8 +41,7 @@ export default function Header() {
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  const handleSearchSelect = (product: any) => {
+  const handleSearchSelect = (product: Product) => {
     setSelectedProduct(product)
     setIsSearchOpen(false)
   }
