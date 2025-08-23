@@ -44,26 +44,31 @@ export default function HeroSection({ onMenuClick }: HeroSectionProps) {
                         Уголок вкуса №1
                     </h1>
 
-                    {/* Описание - добавим отступ снизу только для мобильных */}
+                    {/* Описание */}
                     <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-md
                                  pb-6    // ← Отступ снизу только для мобильных
                                  md:pb-0 // ← Для планшетов и ПК - БЕЗ отступа">
                         - уютное кафе с доставкой в Нижнем Новгороде.
                     </p>
 
-                    {/* Телефоны - добавим отступ снизу только для мобильных */}
-                    <div className="space-y-2
-                                   pb-6    // ← Отступ снизу только для мобильных
-                                   md:pb-0 // ← Для планшетов и ПК - БЕЗ отступа">
-                        <p className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md font-semibold">
+                    {/*Телефоны*/}
+            
+                    <div className="space-y-2 pb-6 md:pb-0">
+                        <a
+                            href="tel:+79696252020"
+                            className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md font-semibold hover:text-primary transition-colors block"
+                        >
                             +7 (969) 625-20-20
-                        </p>
-                        <p className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md font-semibold">
+                        </a>
+                        <a
+                            href="tel:+78312146114"
+                            className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md font-semibold hover:text-primary transition-colors block"
+                        >
                             +7 (831) 2-146-114
-                        </p>
+                        </a>
                     </div>
 
-                    {/* Кнопка CTA - добавим отступ сверху только для мобильных */}
+                    {/* Кнопка CTA */}
                     <div className="pt-4    // ← Отступ сверху только для мобильных
                                   md:pt-0"> {/* ← Для планшетов и ПК - БЕЗ отступа */}
                         <Button
@@ -85,7 +90,7 @@ export default function HeroSection({ onMenuClick }: HeroSectionProps) {
 
                     {/* Дополнительная информация */}
                     <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 text-sm text-white/90 
-                                   pt-6    // ← Отступ сверху только для мобильных
+                                   pt-1    // ← Отступ сверху только для мобильных
                                    md:pt-0">
                         <div className="flex items-center gap-2 justify-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
                             <div className="w-2 h-2 bg-white rounded-full" />

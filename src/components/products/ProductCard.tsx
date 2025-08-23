@@ -7,6 +7,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Product } from '@/lib/data/products.types'
 
+
 interface ProductCardProps {
     product: Product
     onSelect: (product: Product) => void
@@ -37,7 +38,7 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
 
     return (
         <Card
-            className="cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] h-full flex flex-col"
+            className="cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] h-full flex flex-col  text-xs sm:text-sm"
             onClick={() => onSelect(product)}
         >
             <CardHeader className="p-3 flex-1">
