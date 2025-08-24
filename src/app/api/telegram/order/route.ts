@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isBlacklisted, formatPhone } from "@/lib/validation";
 
+
+interface CartItem {
+  name: string;
+  quantity: number;
+  price: number;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const orderData = await request.json();
@@ -41,7 +48,7 @@ ${
 <b>Товары:</b>
 ${orderData.items
   .map(
-    (item: any) =>
+    (item: CartItem) =>
       `• ${item.name} x${item.quantity} - ${item.price * item.quantity}₽`
   )
   .join("\n")}
