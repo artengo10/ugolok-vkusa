@@ -65,7 +65,7 @@ export default function FooterMap() {
             iconColor: '#ff0000'
         })
 
-        // @ts-expect-error
+        // @ts-expect-error - Яндекс Карты методы не типизированы
         map.geoObjects.add(placemark)
     }
 
