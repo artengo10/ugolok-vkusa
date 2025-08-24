@@ -45,12 +45,12 @@ export default function FooterMap() {
         mapContainer.innerHTML = ''
 
         const map = new ymaps.Map(mapContainer, {
-            center: [56.326887, 44.005986],
-            zoom: 15,
+            center: [56.355983, 43.858294],
+            zoom: 16.5,
             controls: ['zoomControl', 'fullscreenControl']
         })
 
-        const placemark = new ymaps.Placemark([56.326887, 44.005986], {
+        const placemark = new ymaps.Placemark([56.355983, 43.858294], {
             hintContent: 'Кафе "Уголок Вкуса"',
             balloonContent: `
                 <div style="padding: 10px;">

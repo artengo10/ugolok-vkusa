@@ -12,17 +12,22 @@ interface CartOrderFormProps {
         pickupTime: string
     }
     onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    disabled?: boolean
 }
 
 export default function CartOrderForm({
     orderType,
     formData,
-    onInputChange
+    onInputChange,
+    disabled = false
 }: CartOrderFormProps) {
     return (
         <div className="space-y-4">
+            {/* Имя */}
             <div className="space-y-2">
-                <Label htmlFor="name" className="text-sm font-medium">Имя *</Label>
+                <Label htmlFor="name" className="text-sm font-medium">
+                    Имя *
+                </Label>
                 <Input
                     id="name"
                     name="name"
@@ -30,11 +35,15 @@ export default function CartOrderForm({
                     value={formData.name}
                     onChange={onInputChange}
                     className="bg-background"
+                    disabled={disabled}
                 />
             </div>
 
+            {/* Телефон */}
             <div className="space-y-2">
-                <Label htmlFor="phone" className="text-sm font-medium">Телефон *</Label>
+                <Label htmlFor="phone" className="text-sm font-medium">
+                    Телефон *
+                </Label>
                 <Input
                     id="phone"
                     name="phone"
@@ -42,12 +51,15 @@ export default function CartOrderForm({
                     value={formData.phone}
                     onChange={onInputChange}
                     className="bg-background"
+                    disabled={disabled}
                 />
             </div>
 
             {orderType === 'delivery' && (
                 <div className="space-y-2">
-                    <Label htmlFor="address" className="text-sm font-medium">Адрес доставки *</Label>
+                    <Label htmlFor="address" className="text-sm font-medium">
+                        Адрес доставки *
+                    </Label>
                     <Input
                         id="address"
                         name="address"
@@ -55,13 +67,16 @@ export default function CartOrderForm({
                         value={formData.address}
                         onChange={onInputChange}
                         className="bg-background"
+                        disabled={disabled}
                     />
                 </div>
             )}
 
             {orderType === 'pickup' && (
                 <div className="space-y-2">
-                    <Label htmlFor="pickupTime" className="text-sm font-medium">Время забрать *</Label>
+                    <Label htmlFor="pickupTime" className="text-sm font-medium">
+                        Время забрать *
+                    </Label>
                     <Input
                         id="pickupTime"
                         name="pickupTime"
@@ -69,6 +84,7 @@ export default function CartOrderForm({
                         value={formData.pickupTime}
                         onChange={onInputChange}
                         className="bg-background"
+                        disabled={disabled}
                     />
                 </div>
             )}

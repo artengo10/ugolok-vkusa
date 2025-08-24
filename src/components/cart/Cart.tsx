@@ -13,6 +13,10 @@ import CartTabs from './CartTabs'
 import CartOrderForm from './CartOrderForm'
 import CartItemsList from './CartItemsList'
 import { showToast } from '@/lib/utils/toast'
+import {
+    isValidPhone,
+    isBlacklisted
+} from '@/lib/validation'
 
 interface CartProps {
     open: boolean
@@ -27,33 +31,88 @@ export default function Cart({ open, onOpenChange }: CartProps) {
         address: '',
         pickupTime: ''
     })
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const { items, totalPrice, clearCart, calculatePrepayment } = useCartStore()
     const total = totalPrice()
     const prepayment = calculatePrepayment(orderType, total)
-    const finalTotal = total - prepayment // Итоговая сумма к оплате
+    const finalTotal = total - prepayment
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
     }
 
-
-    const handleOrder = () => {
-        // Уведомление с информацией о предоплате
-        if (prepayment > 0) {
-            showToast.info(`Требуется предоплата: ${prepayment}₽`);
+    const handleOrder = async () => {
+        // Проверка черного списка
+        if (isBlacklisted(formData.phone)) {
+            showToast.error('Заказ не может быть оформлен')
+            return
         }
 
-        showToast.orderCreated();
+        // Проверка номера телефона
+        if (!isValidPhone(formData.phone)) {
+            showToast.error('Номер телефона должен содержать 10-11 цифр')
+            return
+        }
 
-        clearCart()
-        onOpenChange(false)
-        setFormData({ name: '', phone: '', address: '', pickupTime: '' })
+        // Базовые проверки заполненности полей
+        if (!formData.name || !formData.phone ||
+            (orderType === 'delivery' ? !formData.address : !formData.pickupTime)) {
+            showToast.error('Заполните все обязательные поля')
+            return
+        }
+
+        setIsSubmitting(true)
+
+        try {
+            // Отправляем заказ в Telegram
+            const response = await fetch('/api/telegram/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    phone: formData.phone,
+                    type: orderType,
+                    address: formData.address,
+                    pickupTime: formData.pickupTime,
+                    items: items,
+                    total: total,
+                    prepayment: prepayment,
+                    finalTotal: finalTotal
+                })
+            })
+
+            if (!response.ok) {
+                throw new Error('Ошибка при отправке заказа')
+            }
+
+            // Уведомление о предоплате
+            if (prepayment > 0) {
+                showToast.info(`Требуется предоплата: ${prepayment}₽`)
+            }
+
+            showToast.orderCreated()
+            clearCart()
+            onOpenChange(false)
+            setFormData({ name: '', phone: '', address: '', pickupTime: '' })
+
+        } catch (error) {
+            console.error('Order error:', error)
+            showToast.error('Ошибка при отправке заказа. Попробуйте еще раз.')
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
-    const isFormInvalid = !formData.name || !formData.phone ||
-        (orderType === 'delivery' ? !formData.address : !formData.pickupTime)
+    const isFormInvalid =
+        !formData.name ||
+        !formData.phone ||
+        (orderType === 'delivery' ? !formData.address : !formData.pickupTime) ||
+        isBlacklisted(formData.phone) ||
+        !isValidPhone(formData.phone)
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
@@ -131,9 +190,10 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                             className="w-full"
                             size="lg"
                             onClick={handleOrder}
-                            disabled={isFormInvalid}
+                            disabled={isFormInvalid || isSubmitting}
                         >
-                            {prepayment > 0 ? 'Перейти к предоплате' : 'Оформить заказ'}
+                            {isSubmitting ? 'Отправка...' :
+                                prepayment > 0 ? 'Перейти к предоплате' : 'Оформить заказ'}
                         </Button>
                     </div>
                 )}
