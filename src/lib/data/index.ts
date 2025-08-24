@@ -1,35 +1,49 @@
 export * from "./products.types";
 
 // Импортируем все массивы товаров
-import { pizzaProducts } from "./products/pizza";
-import { burgersProducts } from "./products/burgers";
-import { lavashProducts } from "./products/lavash";
-import { hotdogsProducts } from "./products/hotdogs";
-import { saladsProducts } from "./products/salads";
-import { snacksProducts } from "./products/snacks";
+import { hotDrinksProducts } from "./products/hot-drinks";
+import { breakfastProducts } from "./products/breakfast";
+import { kutabsProducts } from "./products/kutabs";
+import { fastfoodProducts } from "./products/fastfood";
 import { soupsProducts } from "./products/soups";
-import { rollsProducts } from "./products/rolls";
-import { wokProducts } from "./products/wok";
-import { dessertsProducts } from "./products/desserts";
-import { drinksProducts } from "./products/drinks";
+import { saladsProducts } from "./products/salads";
+import { shashlikProducts } from "./products/shashlik";
+import { seasonalProducts } from "./products/seasonal";
+import { pizzaProducts } from "./products/pizza";
+import { mainCoursesProducts } from "./products/main-courses";
+import { garnishesProducts } from "./products/garnishes";
+import { friesProducts } from "./products/fries";
 import { saucesProducts } from "./products/sauces";
-import { sidesProducts } from "./products/sides";
-import { extrasProducts } from "./products/extras";
 
 // Объединяем все товары в один массив
 export const products = [
-  ...pizzaProducts,
-  ...burgersProducts,
-  ...lavashProducts,
-  ...hotdogsProducts,
-  ...saladsProducts,
-  ...snacksProducts,
+  ...hotDrinksProducts,
+  ...breakfastProducts,
+  ...kutabsProducts,
+  ...fastfoodProducts,
   ...soupsProducts,
-  ...rollsProducts,
-  ...wokProducts,
-  ...dessertsProducts,
-  ...drinksProducts,
+  ...saladsProducts,
+  ...shashlikProducts,
+  ...seasonalProducts,
+  ...pizzaProducts,
+  ...mainCoursesProducts,
+  ...garnishesProducts,
+  ...friesProducts,
   ...saucesProducts,
-  ...sidesProducts,
-  ...extrasProducts,
 ];
+
+// Вспомогательная функция для получения товаров по категории
+export const getProductsByCategory = (category: string) => {
+  return products.filter((product) => product.category === category);
+};
+
+// Вспомогательная функция для поиска товаров
+export const searchProducts = (query: string) => {
+  const searchTerm = query.toLowerCase();
+  return products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(searchTerm) ||
+      product.description.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm)
+  );
+};

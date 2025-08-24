@@ -7,20 +7,19 @@ interface CategoryFilterProps {
 
 const categories = [
     { id: 'all', name: 'Все' },
-    { id: 'pizza', name: 'Пицца' },
-    { id: 'burgers', name: 'Бургеры' },
-    { id: 'lavash', name: 'Лаваши' },
-    { id: 'hotdogs', name: 'Хот-Доги' },
-    { id: 'salads', name: 'Салаты' },
-    { id: 'snacks', name: 'Закуски' },
+    { id: 'hot-drinks', name: 'Горячие напитки' },
+    { id: 'breakfast', name: 'Завтраки' },
+    { id: 'kutabs', name: 'Кутабы' },
+    { id: 'fastfood', name: 'Фастфуд' },
     { id: 'soups', name: 'Супы' },
-    { id: 'rolls', name: 'Роллы' },
-    { id: 'wok', name: 'WOK' },
-    { id: 'desserts', name: 'Десерты' },
-    { id: 'drinks', name: 'Напитки' },
-    { id: 'sauces', name: 'Соусы' },
-    { id: 'sides', name: 'Гарниры' },
-    { id: 'extras', name: 'Дополнительно' },
+    { id: 'salads', name: 'Салаты' },
+    { id: 'shashlik', name: 'Шашлык' },
+    { id: 'seasonal', name: 'Сезонные блюда' },
+    { id: 'pizza', name: 'Пицца' },
+    { id: 'main-courses', name: 'Горячие блюда' },
+    { id: 'garnishes', name: 'Гарниры' },
+    { id: 'fries', name: 'Фритюр' },
+    { id: 'sauces', name: 'Соусы' }
 ]
 
 export default function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryFilterProps) {

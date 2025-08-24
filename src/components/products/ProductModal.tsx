@@ -1,31 +1,23 @@
 'use client'
 
-
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Coffee, Plus, Minus } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
-
-
-interface Product {
-    id: number
-    name: string
-    price: number
-    description: string
-    image?: string
-    category: string
-}
+import { Product } from '@/lib/data'
 
 interface ProductModalProps {
     product: Product | null
     isOpen: boolean
     onClose: () => void
-    onAddToCart: (product: Product & { quantity: number }) => void // quantity обязателен
+    onAddToCart: (product: Product & { quantity: number }) => void
 }
 
 export default function ProductModal({ product, isOpen, onClose, onAddToCart }: ProductModalProps) {
     const [quantity, setQuantity] = useState(1)
+    const [imageLoaded, setImageLoaded] = useState(false)
+    const [imageError, setImageError] = useState(false)
 
     if (!product) return null
 
@@ -51,20 +43,27 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
                     <DialogDescription>{product.category}</DialogDescription>
                 </DialogHeader>
 
-                <div className="w-full h-64 bg-muted rounded-lg mb-4 flex items-center justify-center relative">
-                    {product.image ? (
+                {/* Увеличиваем контейнер для изображения в модалке */}
+                <div className="w-full h-100 bg-muted rounded-lg mb-4 flex items-center justify-center relative">
+                    {!imageLoaded && !imageError && (
+                        <div className="absolute inset-0 bg-muted-foreground/20 animate-pulse rounded-lg"></div>
+                    )}
+                    {product.image && !imageError ? (
                         <Image
                             src={product.image}
                             alt={product.name}
                             fill
-                            className="object-cover rounded-lg"
+                            className="object-contain rounded-lg" /* Меняем на object-contain */
+                            onLoad={() => setImageLoaded(true)}
+                            onError={() => setImageError(true)}
+                            sizes="100vw"
                         />
                     ) : (
                         <Coffee className="h-20 w-20 text-muted-foreground" />
                     )}
                 </div>
 
-                <p className="text-muted-foreground mb-6">{product.description}</p>
+                <p className="text-muted-foreground mb-2">{product.description}</p>
 
                 {/* Счетчик количества */}
                 <div className="flex items-center justify-between mb-6">

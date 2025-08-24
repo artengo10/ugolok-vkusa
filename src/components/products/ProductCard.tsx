@@ -7,7 +7,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Product } from '@/lib/data/products.types'
 
-
 interface ProductCardProps {
     product: Product
     onSelect: (product: Product) => void
@@ -38,11 +37,12 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
 
     return (
         <Card
-            className="cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] h-full flex flex-col  text-xs sm:text-sm"
+            className="cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] h-full flex flex-col"
             onClick={() => onSelect(product)}
         >
-            <CardHeader className="p-3 flex-1">
-                <div className="w-full h-28 sm:h-36 md:h-48 bg-muted rounded-lg mb-3 flex items-center justify-center relative">
+            <CardHeader className="p-2 flex-1">
+                {/* УВЕЛИЧИВАЕМ контейнер для изображения */}
+                <div className="w-full h-40 sm:h-48 md:h-85 bg-muted rounded-lg mb-3 flex items-center justify-center relative">
                     {!imageLoaded && !imageError && (
                         <div className="absolute inset-0 bg-muted-foreground/20 animate-pulse rounded-lg"></div>
                     )}
@@ -51,18 +51,21 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
                             src={product.image}
                             alt={product.name}
                             fill
-                            className="object-cover rounded-lg"
+                            className="object-contain rounded-lg" /* Меняем на object-contain */
                             onLoad={() => setImageLoaded(true)}
                             onError={() => setImageError(true)}
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         />
                     ) : (
-                        <Coffee className="h-6 w-6 sm:h-8 sm:w-8 md:h-12 md:w-12 text-muted-foreground" />
+                        <Coffee className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-muted-foreground" />
                     )}
                 </div>
-                <CardTitle className="text-sm sm:text-base font-semibold leading-tight line-clamp-2 h-10">
+
+                {/* Уменьшаем отступы у текста чтобы компенсировать увеличение изображения */}
+                <CardTitle className="text-sm sm:text-base font-semibold leading-tight line-clamp-2 h-5 mt-0">
                     {product.name}
                 </CardTitle>
-                <CardDescription className="text-xs sm:text-sm line-clamp-2 mt-1 h-10">
+                <CardDescription className="text-xs sm:text-sm line-clamp-2 h-5">
                     {product.description}
                 </CardDescription>
             </CardHeader>

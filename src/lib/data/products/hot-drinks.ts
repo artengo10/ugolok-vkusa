@@ -1,0 +1,60 @@
+import { Product } from "../products.types";
+
+export const hotDrinksProducts: Product[] = [
+  {
+    id: 1,
+    name: "Чай черный",
+    price: 100,
+    description: "Ароматный черный чай",
+    category: "hot-drinks",
+    image: "/images/products/hot-drinks/chay_hernui.jpg",
+  },
+  {
+    id: 2,
+    name: "Чай черный с чабрецом",
+    price: 120,
+    description: "Черный чай с ароматным чабрецом",
+    category: "hot-drinks",
+    image: "/images/products/hot-drinks/chay_hebrec.jpg",
+  },
+  {
+    id: 3,
+    name: "Чай зеленый",
+    price: 100,
+    description: "Освежающий зеленый чай",
+    category: "hot-drinks",
+    image: "/images/products/hot-drinks/chay_zeleniy.jpg",
+  },
+  {
+    id: 5,
+    name: "Эспрессо",
+    price: 150,
+    description: "Крепкий черный кофе",
+    category: "hot-drinks",
+    image: "/images/products/hot-drinks/espreso.jpg",
+  },
+  {
+    id: 6,
+    name: "Американо",
+    price: 160,
+    description: "Классический черный кофе",
+    category: "hot-drinks",
+    image: "/images/products/hot-drinks/americano.jpg",
+  },
+  {
+    id: 7,
+    name: "Капучино",
+    price: 180,
+    description: "Кофе с молочной пенкой",
+    category: "hot-drinks",
+    image: "/images/products/hot-drinks/caputchina.jpg",
+  },
+  {
+    id: 8,
+    name: "Латте",
+    price: 190,
+    description: "Кофе с большим количеством молока",
+    category: "hot-drinks",
+    image: "/images/products/hot-drinks/lattee.jpg",
+  },
+];
