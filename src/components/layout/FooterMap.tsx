@@ -65,7 +65,7 @@ export default function FooterMap() {
             iconColor: '#ff0000'
         })
 
-        // @ts-ignore
+        // @ts-expect-error
         map.geoObjects.add(placemark)
     }
 
