@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Facebook, Instagram, Phone, MapPin } from 'lucide-react'
+import { Phone, MapPin, MessageCircle } from 'lucide-react'
 
 export default function Footer() {
     const currentYear = new Date().getFullYear()
@@ -128,18 +128,13 @@ export default function Footer() {
                         {/* Соцсети */}
                         <div className="flex justify-center md:justify-end gap-3">
                             <a
-                                href="#"
+                                href="https://t.me/ваш_телеграм"
                                 className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-border/20"
-                                aria-label="Facebook"
+                                aria-label="Telegram"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                                <Facebook className="h-4 w-4" />
-                            </a>
-                            <a
-                                href="#"
-                                className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-border/20"
-                                aria-label="Instagram"
-                            >
-                                <Instagram className="h-4 w-4" />
+                                <MessageCircle className="h-5 w-5" />
                             </a>
                         </div>
                     </div>

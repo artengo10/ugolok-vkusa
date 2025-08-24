@@ -41,8 +41,8 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
             onClick={() => onSelect(product)}
         >
             <CardHeader className="p-2 flex-1">
-                {/* УВЕЛИЧИВАЕМ контейнер для изображения */}
-                <div className="w-full h-40 sm:h-48 md:h-85 bg-muted rounded-lg mb-3 flex items-center justify-center relative">
+                {/*  контейнер для изображения */}
+                <div className="w-full h-40 sm:h-65 md:h-85 bg-muted rounded-lg mb-3 flex items-center justify-center relative">
                     {!imageLoaded && !imageError && (
                         <div className="absolute inset-0 bg-muted-foreground/20 animate-pulse rounded-lg"></div>
                     )}

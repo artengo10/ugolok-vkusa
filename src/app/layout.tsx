@@ -5,6 +5,8 @@ import './globals.css'
 import { SearchProvider } from '@/lib/contexts/search-context'
 import { Toaster } from '@/components/ui/sonner'
 import { Comfortaa } from 'next/font/google'
+import FooterMap from '@/components/layout/FooterMap'
+
 
 // Настройка шрифта Comfortaa
 const comfortaa = Comfortaa({
@@ -34,14 +36,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className={comfortaa.className} suppressHydrationWarning>
-      <head>
-        {/* Можно добавить дополнительные meta-теги здесь */}
-      </head>
       <body className="flex flex-col min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SearchProvider>
             <Header />
             <main className="flex-1">{children}</main>
+            {/* Добавляем карту на все страницы */}
+            <FooterMap />
             <Footer />
             <Toaster />
           </SearchProvider>
