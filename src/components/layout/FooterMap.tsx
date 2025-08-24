@@ -1,14 +1,21 @@
 'use client'
 
-
 import { useEffect, useState } from 'react'
 import MapReviews from '@/components/map/MapReviews'
+
+// Интерфейсы для типизации
+interface YMaps {
+    ready: (callback: () => void) => void
+    Map: new (container: string | HTMLElement, options: object) => unknown
+    Placemark: new (coordinates: number[], properties: object, options: object) => unknown
+    geocode: (address: string) => Promise<unknown>
+}
 
 export default function FooterMap() {
     const [isMapsLoaded, setIsMapsLoaded] = useState(false)
 
     useEffect(() => {
-        if (window.ymaps) {
+        if ((window as unknown as { ymaps: YMaps }).ymaps) {
             setIsMapsLoaded(true)
             initMap()
             return
@@ -18,7 +25,8 @@ export default function FooterMap() {
         script.src = 'https://api-maps.yandex.ru/2.1/?apikey=57a04b0e-9c7d-4756-9ae3-7618d0469620&lang=ru_RU'
         script.async = true
         script.onload = () => {
-            window.ymaps.ready(() => {
+            const ymaps = (window as unknown as { ymaps: YMaps }).ymaps
+            ymaps.ready(() => {
                 setIsMapsLoaded(true)
                 initMap()
             })
@@ -31,31 +39,33 @@ export default function FooterMap() {
 
     const initMap = () => {
         const mapContainer = document.getElementById('footer-map')
-        if (!mapContainer || !window.ymaps) return
+        const ymaps = (window as unknown as { ymaps: YMaps }).ymaps
+        if (!mapContainer || !ymaps) return
 
         mapContainer.innerHTML = ''
 
-        const map = new window.ymaps.Map(mapContainer, {
+        const map = new ymaps.Map(mapContainer, {
             center: [56.326887, 44.005986],
             zoom: 15,
             controls: ['zoomControl', 'fullscreenControl']
         })
 
-        const placemark = new window.ymaps.Placemark([56.326887, 44.005986], {
+        const placemark = new ymaps.Placemark([56.326887, 44.005986], {
             hintContent: 'Кафе "Уголок Вкуса"',
             balloonContent: `
-        <div style="padding: 10px;">
-          <strong>Кафе "Уголок Вкуса"</strong><br/>
-          ул. Исполкома, 6/2, Нижний Новгород<br/>
-          📞 +7 (969) 625-20-20<br/>
-          📞 +7 (831) 2-146-114
-        </div>
-      `
+                <div style="padding: 10px;">
+                    <strong>Кафе "Уголок Вкуса"</strong><br/>
+                    ул. Исполкома, 6/2, Нижний Новгород<br/>
+                    📞 +7 (969) 625-20-20<br/>
+                    📞 +7 (831) 2-146-114
+                </div>
+            `
         }, {
             preset: 'islands#redFoodIcon',
             iconColor: '#ff0000'
         })
 
+        // @ts-ignore
         map.geoObjects.add(placemark)
     }
 
@@ -81,16 +91,4 @@ export default function FooterMap() {
             </div>
         </section>
     )
-}
-
-declare global {
-    interface Window {
-        ymaps: {
-            ready: (callback: () => void) => void
-            Map: new (container: string | HTMLElement, options: object) => any
-            Placemark: new (coordinates: number[], properties: object, options: object) => any
-            geocode: (address: string) => Promise<any>
-            
-        }
-    }
 }
