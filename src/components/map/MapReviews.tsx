@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Star, MessageCircle, X, ChevronDown, ChevronUp } from 'lucide-react'
+import { Star, MessageCircle, ChevronDown, ChevronUp } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface Review {

@@ -1,5 +1,6 @@
 'use client'
 
+
 import { useEffect, useState } from 'react'
 import MapReviews from '@/components/map/MapReviews'
 
@@ -84,6 +85,12 @@ export default function FooterMap() {
 
 declare global {
     interface Window {
-        ymaps: any
+        ymaps: {
+            ready: (callback: () => void) => void
+            Map: new (container: string | HTMLElement, options: object) => any
+            Placemark: new (coordinates: number[], properties: object, options: object) => any
+            geocode: (address: string) => Promise<any>
+            
+        }
     }
 }
