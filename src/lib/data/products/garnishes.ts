@@ -4,7 +4,7 @@ export const garnishesProducts: Product[] = [
   {
     id: 73,
     name: "Рис",
-    price: 80,
+    price: 145,
     description: "Отварной рис",
     category: "garnishes",
     image: "/images/products/garnishes/ris.jpg",
@@ -12,7 +12,7 @@ export const garnishesProducts: Product[] = [
   {
     id: 74,
     name: "Гречка",
-    price: 70,
+    price: 145,
     description: "Отварная гречневая крупа",
     category: "garnishes",
     image: "/images/products/garnishes/grechka.jpg",
@@ -20,7 +20,7 @@ export const garnishesProducts: Product[] = [
   {
     id: 75,
     name: "Макароны",
-    price: 60,
+    price: 145,
     description: "Отварные макаронные изделия",
     category: "garnishes",
     image: "/images/products/garnishes/makaron.jpg",

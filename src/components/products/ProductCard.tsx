@@ -35,6 +35,17 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
         }
     }
 
+    // Функция для отображения объема/веса
+    const renderSizeInfo = () => {
+        if (product.volume && product.unit) {
+            return `${product.volume} ${product.unit}`
+        }
+        if (product.weight && product.unit) {
+            return `${product.weight} ${product.unit}`
+        }
+        return null
+    }
+
     return (
         <Card
             className="cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] h-full flex flex-col"
@@ -65,6 +76,12 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
                 <CardTitle className="text-sm sm:text-base font-semibold leading-tight line-clamp-2 h-5 mt-0">
                     {product.name}
                 </CardTitle>
+                {/* Отображение объема/веса */}
+                {renderSizeInfo() && (
+                    <div className="text-xs text-muted-foreground mt-1">
+                        {renderSizeInfo()}
+                    </div>
+                )}
                 <CardDescription className="text-xs sm:text-sm line-clamp-2 h-5">
                     {product.description}
                 </CardDescription>

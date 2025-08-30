@@ -4,7 +4,7 @@ export const seasonalProducts: Product[] = [
   {
     id: 54,
     name: "Овощная Долма",
-    price: 320,
+    price: 520,
     description: "Традиционная долма с овощной начинкой",
     category: "seasonal",
     image: "/images/products/seasonal/dolma.jpeg",
@@ -12,7 +12,7 @@ export const seasonalProducts: Product[] = [
   {
     id: 55,
     name: "Хаш азербайджанский",
-    price: 480,
+    price: 550,
     description: "Традиционный азербайджанский хаш",
     category: "seasonal",
     image: "/images/products/seasonal/hash.jpg",

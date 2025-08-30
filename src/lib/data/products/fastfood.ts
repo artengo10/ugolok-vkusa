@@ -4,7 +4,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 18,
     name: "Шаурма куриная",
-    price: 280,
+    price: 250,
     description: "Шаурма с курицей и свежими овощами",
     category: "fastfood",
     image: "/images/products/fastfood/shaurma-kurina.jpg.jpeg",
@@ -12,7 +12,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 19,
     name: "Шаурма говяжья",
-    price: 320,
+    price: 250,
     description: "Шаурма с говядиной и овощами",
     category: "fastfood",
     image: "/images/products/fastfood/shaurma-govadina.jpg.jpeg",
@@ -20,7 +20,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 20,
     name: "Шаурма свиная",
-    price: 300,
+    price: 260,
     description: "Шаурма со свининой и свежими овощами",
     category: "fastfood",
     image: "/images/products/fastfood/shaurma-svinina.jpg.jpeg",
@@ -28,7 +28,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 21,
     name: "Шаурма мини куриная",
-    price: 180,
+    price: 200,
     description: "Мини-шаурма с курицей",
     category: "fastfood",
     image: "/images/products/fastfood/shaurma-kuriza.jpg",
@@ -44,7 +44,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 23,
     name: "Шаурма мини свиная",
-    price: 190,
+    price: 210,
     description: "Мини-шаурма со свининой",
     category: "fastfood",
     image: "/images/products/fastfood/shaurma-svinina.jpg",
@@ -52,7 +52,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 24,
     name: "Донер куриный",
-    price: 250,
+    price: 300,
     description: "Турецкий донер с курицей",
     category: "fastfood",
     image: "/images/products/fastfood/doner-kur.jpg",
@@ -60,7 +60,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 25,
     name: "Донер говяжий",
-    price: 290,
+    price: 300,
     description: "Турецкий донер с говядиной",
     category: "fastfood",
     image: "/images/products/fastfood/doner-govydina.jpg",
@@ -68,7 +68,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 26,
     name: "Рыба в лаваше по-турецки",
-    price: 350,
+    price: 300,
     description: "Рыба в лаваше с овощами",
     category: "fastfood",
     image: "/images/products/fastfood/ruba-tyrka.jpg",

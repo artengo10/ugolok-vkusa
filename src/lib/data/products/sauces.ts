@@ -12,7 +12,7 @@ export const saucesProducts: Product[] = [
   {
     id: 79,
     name: "Соус барбекю",
-    price: 40,
+    price: 50,
     description: "Классический соус барбекю",
     category: "sauces",
     image: "/images/products/sauces/sous-barb.jpg",
@@ -20,7 +20,7 @@ export const saucesProducts: Product[] = [
   {
     id: 80,
     name: "Кисло-сладкий соус",
-    price: 45,
+    price: 50,
     description: "Кисло-сладкий соус",
     category: "sauces",
     image: "/images/products/sauces/sous-ks.jpg",
@@ -28,7 +28,7 @@ export const saucesProducts: Product[] = [
   {
     id: 81,
     name: "Брусничный соус",
-    price: 55,
+    price: 50,
     description: "Брусничный соус",
     category: "sauces",
     image: "/images/products/sauces/sous-brus.jpg",

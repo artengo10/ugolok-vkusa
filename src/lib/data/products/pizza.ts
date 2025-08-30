@@ -4,7 +4,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 56,
     name: "Пицца Куриная",
-    price: 420,
+    price: 700,
     description: "Пицца с курицей и овощами",
     category: "pizza",
     image: "/images/products/pizza/pizza-kurinay.jpg.jpeg",
@@ -12,7 +12,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 57,
     name: "Пицца Грибная",
-    price: 380,
+    price: 700,
     description: "Пицца с грибами и сыром",
     category: "pizza",
     image: "/images/products/pizza/pizza-gribnay.jpg.jpeg",
@@ -20,7 +20,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 58,
     name: "Пицца Маргарита",
-    price: 350,
+    price: 700,
     description: "Классическая пицца Маргарита",
     category: "pizza",
     image: "/images/products/pizza/pizza-margarita.jpg.jpeg",
@@ -28,7 +28,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 59,
     name: "Пицца Четыре сыра",
-    price: 450,
+    price: 700,
     description: "Пицца с четырьмя видами сыра",
     category: "pizza",
     image: "/images/products/pizza/pizza-4sura.jpeg",
@@ -36,7 +36,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 60,
     name: "Пицца Пепперони",
-    price: 400,
+    price: 700,
     description: "Острая пицца с пепперони",
     category: "pizza",
     image: "/images/products/pizza/pizza-peperoni.jpg.jpeg",
@@ -44,7 +44,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 61,
     name: "Пицца с морепродуктами",
-    price: 520,
+    price: 850,
     description: "Пицца с морепродуктами",
     category: "pizza",
 
@@ -53,7 +53,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 62,
     name: "Хачапури по-азербайджански",
-    price: 280,
+    price: 500,
     description: "Традиционное азербайджанское хачапури",
     category: "pizza",
     image: "/images/products/pizza/chahapuri.jpg.jpeg",
@@ -61,7 +61,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 63,
     name: "Хачапури по-мегрельски",
-    price: 300,
+    price: 550,
     description: "Мегрельское хачапури с сыром",
     category: "pizza",
     image: "/images/products/pizza/chahapuri-megrel.jpg.jpeg",
@@ -69,7 +69,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 64,
     name: "Лахмаджун",
-    price: 220,
+    price: 350,
     description: "Тонкая лепешка с мясной начинкой",
     category: "pizza",
     image: "/images/products/pizza/laxmudgun.jpg.jpeg",

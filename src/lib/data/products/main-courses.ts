@@ -4,7 +4,7 @@ export const mainCoursesProducts: Product[] = [
   {
     id: 65,
     name: "Долма",
-    price: 320,
+    price: 390,
     description: "Традиционные виноградные листья с мясной начинкой",
     category: "main-courses",
     image: "/images/products/seasonal/dolma.jpeg",
@@ -12,7 +12,7 @@ export const mainCoursesProducts: Product[] = [
   {
     id: 66,
     name: "Плов с курицей",
-    price: 280,
+    price: 290,
     description: "Узбекский плов с курицей",
     category: "main-courses",
     image: "/images/products/main-courses/plow-kur.jpeg",
@@ -20,7 +20,7 @@ export const mainCoursesProducts: Product[] = [
   {
     id: 67,
     name: "Плов с говядиной",
-    price: 320,
+    price: 340,
     description: "Узбекский плов с говядиной",
     category: "main-courses",
     image: "/images/products/main-courses/plow.jpeg",
@@ -28,7 +28,7 @@ export const mainCoursesProducts: Product[] = [
   {
     id: 68,
     name: "Жареный лагман",
-    price: 300,
+    price: 340,
     description: "Жареный лагман с мясом и овощами",
     category: "main-courses",
     image: "/images/products/main-courses/lugman-jarenuy.jpg.jpeg",
@@ -36,7 +36,7 @@ export const mainCoursesProducts: Product[] = [
   {
     id: 69,
     name: "Манты",
-    price: 260,
+    price: 240,
     description: "Традиционные манты с мясной начинкой",
     category: "main-courses",
     image: "/images/products/main-courses/mantu.jpg.jpeg",
@@ -44,7 +44,7 @@ export const mainCoursesProducts: Product[] = [
   {
     id: 71,
     name: "Казан кебаб",
-    price: 380,
+    price: 370,
     description: "Кебаб, приготовленный в казане",
     category: "main-courses",
     image: "/images/products/main-courses/kazan-kebab.jpg.jpeg",
@@ -52,7 +52,7 @@ export const mainCoursesProducts: Product[] = [
   {
     id: 72,
     name: "Тава кебаб",
-    price: 360,
+    price: 350,
     description: "Кебаб, приготовленный на таве",
     category: "main-courses",
     image: "/images/products/main-courses/towa-kebab.jpeg",

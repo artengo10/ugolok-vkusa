@@ -4,7 +4,7 @@ export const soupsProducts: Product[] = [
   {
     id: 27,
     name: "Куриный суп",
-    price: 220,
+    price: 300,
     description: "Ароматный куриный суп с овощами",
     category: "soups",
     image: "/images/products/soups/kurinuy-syp.jpg.jpeg",
@@ -12,7 +12,7 @@ export const soupsProducts: Product[] = [
   {
     id: 28,
     name: "Дюшбара азербайджанская",
-    price: 280,
+    price: 350,
     description: "Традиционные азербайджанские пельмени в бульоне",
     category: "soups",
     image: "/images/products/soups/dushbara-azer.jpg.jpeg",
@@ -20,7 +20,7 @@ export const soupsProducts: Product[] = [
   {
     id: 29,
     name: "Харчо",
-    price: 260,
+    price: 340,
     description: "Острый грузинский суп с говядиной",
     category: "soups",
     image: "/images/products/soups/charho.jpg.jpeg",
@@ -28,7 +28,7 @@ export const soupsProducts: Product[] = [
   {
     id: 30,
     name: "Кюфта азербайджанская",
-    price: 300,
+    price: 350,
     description: "Суп с мясными фрикадельками",
     category: "soups",
     image: "/images/products/soups/kufta-azer.jpg.jpeg",
@@ -36,7 +36,7 @@ export const soupsProducts: Product[] = [
   {
     id: 31,
     name: "Лагман",
-    price: 270,
+    price: 310,
     description: "Густой суп с лапшой и мясом",
     category: "soups",
     image: "/images/products/soups/lagman-sup.jpg.jpeg",
@@ -52,7 +52,7 @@ export const soupsProducts: Product[] = [
   {
     id: 35,
     name: "Грибной крем-суп",
-    price: 230,
+    price: 250,
     description: "Нежный крем-суп с грибами",
     category: "soups",
     image: "/images/products/soups/surno-gribnoy-sup.jpg.jpeg",

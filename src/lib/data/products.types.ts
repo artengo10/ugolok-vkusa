@@ -5,4 +5,7 @@ export interface Product {
   description: string;
   image?: string;
   category: string;
+  weight?: number; // вес в граммах
+  volume?: number; // объем в мл
+  unit?: string; // единица измерения (г, мл, л, порция)
 }
