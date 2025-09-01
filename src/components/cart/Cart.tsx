@@ -18,6 +18,14 @@ import {
     isBlacklisted
 } from '@/lib/validation'
 
+// Добавляем константы районов прямо в компонент
+const DELIVERY_AREAS = [
+    { id: 'sormovo', name: 'Сормовский район', price: 1000 },
+    { id: 'moscow', name: 'Московский район', price: 1350 },
+    { id: 'kanavino', name: 'Канавинский район', price: 1500 },
+    { id: 'lenin', name: 'Ленинский район', price: 1750 }
+]
+
 interface CartProps {
     open: boolean
     onOpenChange: (open: boolean) => void
@@ -29,18 +37,25 @@ export default function Cart({ open, onOpenChange }: CartProps) {
         name: '',
         phone: '',
         address: '',
-        pickupTime: ''
+        pickupTime: '',
+        district: '' // Добавляем поле для района
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
 
-    const { items, totalPrice, clearCart, calculatePrepayment } = useCartStore()
-    const total = totalPrice()
-    const prepayment = calculatePrepayment(orderType, total)
-    const finalTotal = total - prepayment
+    const { items, totalPrice, clearCart, calculatePrepayment, selectedArea, setDeliveryArea } = useCartStore()
+    const subtotal = totalPrice()
+    const deliveryCost = orderType === 'delivery' && selectedArea ? selectedArea.price : 0
+    const prepayment = calculatePrepayment(orderType, subtotal)
+    const finalTotal = subtotal + deliveryCost - prepayment
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
+    }
+
+    const handleDistrictChange = (area: typeof DELIVERY_AREAS[0]) => {
+        setDeliveryArea(area)
+        setFormData(prev => ({ ...prev, district: area.name }))
     }
 
     const handleOrder = async () => {
@@ -56,6 +71,12 @@ export default function Cart({ open, onOpenChange }: CartProps) {
             return
         }
 
+        // Проверка выбора района для доставки
+        if (orderType === 'delivery' && !selectedArea) {
+            showToast.error('Выберите район доставки')
+            return
+        }
+
         // Базовые проверки заполненности полей
         if (!formData.name || !formData.phone ||
             (orderType === 'delivery' ? !formData.address : !formData.pickupTime)) {
@@ -66,7 +87,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
         setIsSubmitting(true)
 
         try {
-            // Отправляем заказ в Telegram
+            // Отправляем заказ в Telegram (добавляем район в данные)
             const response = await fetch('/api/telegram/order', {
                 method: 'POST',
                 headers: {
@@ -77,9 +98,12 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                     phone: formData.phone,
                     type: orderType,
                     address: formData.address,
+                    district: selectedArea?.name || '', // Добавляем район
                     pickupTime: formData.pickupTime,
                     items: items,
-                    total: total,
+                    subtotal: subtotal,
+                    delivery: deliveryCost,
+                    total: subtotal + deliveryCost,
                     prepayment: prepayment,
                     finalTotal: finalTotal
                 })
@@ -97,7 +121,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
             showToast.orderCreated()
             clearCart()
             onOpenChange(false)
-            setFormData({ name: '', phone: '', address: '', pickupTime: '' })
+            setFormData({ name: '', phone: '', address: '', pickupTime: '', district: '' })
 
         } catch (error) {
             console.error('Order error:', error)
@@ -111,6 +135,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
         !formData.name ||
         !formData.phone ||
         (orderType === 'delivery' ? !formData.address : !formData.pickupTime) ||
+        (orderType === 'delivery' && !selectedArea) || // Добавляем проверку района
         isBlacklisted(formData.phone) ||
         !isValidPhone(formData.phone)
 
@@ -131,6 +156,34 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                         formData={formData}
                         onInputChange={handleInputChange}
                     />
+
+                    {/* ДОБАВЛЯЕМ ВЫБОР РАЙОНА ДЛЯ ДОСТАВКИ */}
+                    {orderType === 'delivery' && (
+                        <div className="space-y-3">
+                            <label className="text-sm font-medium">Район доставки *</label>
+                            <div className="grid grid-cols-2 gap-2">
+                                {DELIVERY_AREAS.map((area) => (
+                                    <Button
+                                        key={area.id}
+                                        type="button"
+                                        variant={selectedArea?.id === area.id ? "default" : "outline"}
+                                        className="h-12 text-sm font-normal"
+                                        onClick={() => handleDistrictChange(area)}
+                                    >
+                                        <div className="text-center">
+                                            <div>{area.name}</div>
+                                            <div className="text-xs opacity-80">+{area.price}₽</div>
+                                        </div>
+                                    </Button>
+                                ))}
+                            </div>
+                            {selectedArea && (
+                                <p className="text-xs text-muted-foreground">
+                                    Выбран: {selectedArea.name} (+{selectedArea.price}₽)
+                                </p>
+                            )}
+                        </div>
+                    )}
 
                     {items.length > 0 && (
                         <div className="border-t pt-4">
@@ -164,10 +217,24 @@ export default function Cart({ open, onOpenChange }: CartProps) {
 
                 {items.length > 0 && (
                     <div className="border-t px-6 py-4 bg-muted/30">
+                        {/* Сумма товаров */}
+                        <div className="flex justify-between text-sm mb-1">
+                            <span>Товары:</span>
+                            <span>{subtotal} ₽</span>
+                        </div>
+
+                        {/* Стоимость доставки */}
+                        {deliveryCost > 0 && (
+                            <div className="flex justify-between text-sm mb-1">
+                                <span>Доставка:</span>
+                                <span className="text-green-600">+{deliveryCost} ₽</span>
+                            </div>
+                        )}
+
                         {/* Общая сумма */}
-                        <div className="flex justify-between text-lg font-semibold mb-2">
+                        <div className="flex justify-between text-lg font-semibold mb-2 border-t pt-2">
                             <span>Сумма заказа:</span>
-                            <span>{total} ₽</span>
+                            <span>{subtotal + deliveryCost} ₽</span>
                         </div>
 
                         {/* Предоплата */}

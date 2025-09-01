@@ -13,7 +13,7 @@ export const showToast = {
 
   // Информационное уведомление о предоплате
   info: (message: string) => {
-    toast.info("💳 Предоплата", {
+    toast.info("Доставка", {
       description: message,
       duration: 3000,
     });

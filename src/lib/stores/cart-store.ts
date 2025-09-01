@@ -10,8 +10,16 @@ export interface CartItem {
   quantity: number;
 }
 
+// Добавляем интерфейс для района
+export interface DeliveryArea {
+  id: string;
+  name: string;
+  price: number;
+}
+
 interface CartStore {
   items: CartItem[];
+  selectedArea: DeliveryArea | null; // Добавляем выбранный район
   addItem: (
     product: Omit<CartItem, "quantity"> & { quantity?: number }
   ) => void;
@@ -21,12 +29,16 @@ interface CartStore {
   totalPrice: () => number;
   totalItems: () => number;
   calculatePrepayment: (orderType: string, total: number) => number; // Новая функция
+  setDeliveryArea: (area: DeliveryArea | null) => void; // Функция для выбора района
+  deliveryPrice: () => number; // Функция для получения стоимости доставки
+  finalPrice: () => number; // Функция для получения итоговой суммы
 }
 
 export const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
       items: [],
+      selectedArea: null, // Инициализируем как null
 
       addItem: (product) => {
         set((state) => {
@@ -89,7 +101,7 @@ export const useCartStore = create<CartStore>()(
 
       clearCart: () => {
         showToast.cartCleared();
-        set({ items: [] });
+                set({ items: [] }); // Также сбрасываем выбранный район
       },
 
       totalPrice: () => {
@@ -111,6 +123,29 @@ export const useCartStore = create<CartStore>()(
           return 500; // Предоплата 500₽ для самовывоза от 2000₽
         }
         return 0; // Без предоплаты
+      },
+
+      // НОВЫЕ ФУНКЦИИ ДЛЯ ДОСТАВКИ:
+      setDeliveryArea: (area) => {
+        set({ selectedArea: area });
+        if (area) {
+          showToast.info(`Выбран район: ${area.name}`);
+        }
+      },
+
+      deliveryPrice: () => {
+        const { selectedArea } = get();
+        return selectedArea ? selectedArea.price : 0;
+      },
+
+      finalPrice: () => {
+        const { items, selectedArea } = get();
+        const itemsTotal = items.reduce(
+          (total, item) => total + item.price * item.quantity,
+          0
+        );
+        const deliveryCost = selectedArea ? selectedArea.price : 0;
+        return itemsTotal + deliveryCost;
       },
     }),
     {
