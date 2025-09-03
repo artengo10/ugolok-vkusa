@@ -2,7 +2,7 @@ import { Product } from "../products.types";
 
 export const saladsProducts: Product[] = [
   {
-    id: 36,
+    id: 27,
     name: "Греческий салат",
     price: 230,
     description: "Классический греческий салат с оливками и сыром фета",
@@ -10,7 +10,7 @@ export const saladsProducts: Product[] = [
     image: "/images/products/salads/salat-grecheskiy.jpg.jpeg",
   },
   {
-    id: 37,
+    id: 28,
     name: "Цезарь с курицей",
     price: 240,
     description: "Салат Цезарь с курицей и соусом",
@@ -19,7 +19,7 @@ export const saladsProducts: Product[] = [
   },
   
   {
-    id: 39,
+    id: 29,
     name: "Чабан салат",
     price: 230,
     description: "Традиционный салат с овощами и зеленью",

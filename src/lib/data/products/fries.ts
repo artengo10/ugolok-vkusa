@@ -2,7 +2,7 @@ import { Product } from "../products.types";
 
 export const friesProducts: Product[] = [
   {
-    id: 76,
+    id: 60,
     name: "Картофель фри",
     price: 150,
     description: "Хрустящий картофель фри",
@@ -10,7 +10,7 @@ export const friesProducts: Product[] = [
     image: "/images/products/fries/fri.jpg",
   },
   {
-    id: 77,
+    id: 61,
     name: "Наггетсы",
     price: 170,
     description: "Куриные наггетсы",

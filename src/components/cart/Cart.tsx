@@ -20,10 +20,10 @@ import {
 
 // Добавляем константы районов прямо в компонент
 const DELIVERY_AREAS = [
-    { id: 'sormovo', name: 'Сормовский район', price: 1000 },
-    { id: 'moscow', name: 'Московский район', price: 1350 },
-    { id: 'kanavino', name: 'Канавинский район', price: 1500 },
-    { id: 'lenin', name: 'Ленинский район', price: 1750 }
+    { id: 'sormovo', name: 'Сормовский район', price: 1500 },
+    { id: 'moscow', name: 'Московский район', price: 1750 },
+    { id: 'kanavino', name: 'Канавинский район', price: 1950 },
+    { id: 'lenin', name: 'Ленинский район', price: 2150 }
 ]
 
 interface CartProps {
@@ -160,7 +160,9 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                     {/* ДОБАВЛЯЕМ ВЫБОР РАЙОНА ДЛЯ ДОСТАВКИ */}
                     {orderType === 'delivery' && (
                         <div className="space-y-3">
-                            <label className="text-sm font-medium">Район доставки *</label>
+                            <label className="text-sm font-medium">Район доставки *
+                            </label>
+                                <p className="text-xs text-muted-foreground">(выбор района обязателен)</p>
                             <div className="grid grid-cols-2 gap-2">
                                 {DELIVERY_AREAS.map((area) => (
                                     <Button

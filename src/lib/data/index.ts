@@ -11,7 +11,6 @@ import { shashlikProducts } from "./products/shashlik";
 import { seasonalProducts } from "./products/seasonal";
 import { pizzaProducts } from "./products/pizza";
 import { mainCoursesProducts } from "./products/main-courses";
-import { garnishesProducts } from "./products/garnishes";
 import { friesProducts } from "./products/fries";
 import { saucesProducts } from "./products/sauces";
 
@@ -27,7 +26,6 @@ export const products = [
   ...seasonalProducts,
   ...pizzaProducts,
   ...mainCoursesProducts,
-  ...garnishesProducts,
   ...friesProducts,
   ...saucesProducts,
 ];

@@ -2,7 +2,7 @@ import { Product } from "../products.types";
 
 export const pizzaProducts: Product[] = [
   {
-    id: 56,
+    id: 44,
     name: "Пицца Куриная",
     price: 700,
     description: "Пицца с курицей и овощами",
@@ -10,7 +10,7 @@ export const pizzaProducts: Product[] = [
     image: "/images/products/pizza/pizza-kurinay.jpg.jpeg",
   },
   {
-    id: 57,
+    id: 45,
     name: "Пицца Грибная",
     price: 700,
     description: "Пицца с грибами и сыром",
@@ -18,7 +18,7 @@ export const pizzaProducts: Product[] = [
     image: "/images/products/pizza/pizza-gribnay.jpg.jpeg",
   },
   {
-    id: 58,
+    id: 46,
     name: "Пицца Маргарита",
     price: 700,
     description: "Классическая пицца Маргарита",
@@ -26,7 +26,7 @@ export const pizzaProducts: Product[] = [
     image: "/images/products/pizza/pizza-margarita.jpg.jpeg",
   },
   {
-    id: 59,
+    id: 47,
     name: "Пицца Четыре сыра",
     price: 700,
     description: "Пицца с четырьмя видами сыра",
@@ -34,7 +34,7 @@ export const pizzaProducts: Product[] = [
     image: "/images/products/pizza/pizza-4sura.jpeg",
   },
   {
-    id: 60,
+    id: 48,
     name: "Пицца Пепперони",
     price: 700,
     description: "Острая пицца с пепперони",
@@ -42,7 +42,7 @@ export const pizzaProducts: Product[] = [
     image: "/images/products/pizza/pizza-peperoni.jpg.jpeg",
   },
   {
-    id: 61,
+    id: 49,
     name: "Пицца с морепродуктами",
     price: 850,
     description: "Пицца с морепродуктами",
@@ -51,7 +51,7 @@ export const pizzaProducts: Product[] = [
     image: "/images/products/pizza/pizza-more-product.jpg.jpeg",
   },
   {
-    id: 62,
+    id: 50,
     name: "Хачапури по-азербайджански",
     price: 500,
     description: "Традиционное азербайджанское хачапури",
@@ -59,7 +59,7 @@ export const pizzaProducts: Product[] = [
     image: "/images/products/pizza/chahapuri.jpg.jpeg",
   },
   {
-    id: 63,
+    id: 51,
     name: "Хачапури по-мегрельски",
     price: 550,
     description: "Мегрельское хачапури с сыром",
@@ -67,7 +67,7 @@ export const pizzaProducts: Product[] = [
     image: "/images/products/pizza/chahapuri-megrel.jpg.jpeg",
   },
   {
-    id: 64,
+    id: 52,
     name: "Лахмаджун",
     price: 350,
     description: "Тонкая лепешка с мясной начинкой",

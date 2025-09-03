@@ -98,7 +98,7 @@ export default function HeroSection({ onMenuClick }: HeroSectionProps) {
                         </div>
                         <div className="flex items-center gap-2 justify-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
                             <div className="w-2 h-2 bg-white rounded-full" />
-                            <span className="font-medium">Авторские десерты</span>
+                            <span className="font-medium">Запоминающийся вкус</span>
                         </div>
                         <div className="flex items-center gap-2 justify-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
                             <div className="w-2 h-2 bg-white rounded-full" />

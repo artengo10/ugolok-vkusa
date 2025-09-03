@@ -2,7 +2,7 @@ import { Product } from "../products.types";
 
 export const soupsProducts: Product[] = [
   {
-    id: 27,
+    id: 20,
     name: "Куриный суп",
     price: 300,
     description: "Ароматный куриный суп с овощами",
@@ -10,7 +10,7 @@ export const soupsProducts: Product[] = [
     image: "/images/products/soups/kurinuy-syp.jpg.jpeg",
   },
   {
-    id: 28,
+    id: 21,
     name: "Дюшбара азербайджанская",
     price: 350,
     description: "Традиционные азербайджанские пельмени в бульоне",
@@ -18,7 +18,7 @@ export const soupsProducts: Product[] = [
     image: "/images/products/soups/dushbara-azer.jpg.jpeg",
   },
   {
-    id: 29,
+    id: 22,
     name: "Харчо",
     price: 340,
     description: "Острый грузинский суп с говядиной",
@@ -26,7 +26,7 @@ export const soupsProducts: Product[] = [
     image: "/images/products/soups/charho.jpg.jpeg",
   },
   {
-    id: 30,
+    id: 23,
     name: "Кюфта азербайджанская",
     price: 350,
     description: "Суп с мясными фрикадельками",
@@ -34,7 +34,7 @@ export const soupsProducts: Product[] = [
     image: "/images/products/soups/kufta-azer.jpg.jpeg",
   },
   {
-    id: 31,
+    id: 24,
     name: "Лагман",
     price: 310,
     description: "Густой суп с лапшой и мясом",
@@ -42,7 +42,7 @@ export const soupsProducts: Product[] = [
     image: "/images/products/soups/lagman-sup.jpg.jpeg",
   },
   {
-    id: 34,
+    id: 25,
     name: "Чечевичный суп",
     price: 200,
     description: "Питательный суп из чечевицы",
@@ -50,7 +50,7 @@ export const soupsProducts: Product[] = [
     image: "/images/products/soups/chahawichnuy-sup.jpg.jpeg",
   },
   {
-    id: 35,
+    id: 26,
     name: "Грибной крем-суп",
     price: 250,
     description: "Нежный крем-суп с грибами",

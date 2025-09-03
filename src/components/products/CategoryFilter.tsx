@@ -17,7 +17,6 @@ const categories = [
     { id: 'seasonal', name: 'Сезонные блюда' },
     { id: 'pizza', name: 'Пицца' },
     { id: 'main-courses', name: 'Горячие блюда' },
-    { id: 'garnishes', name: 'Гарниры' },
     { id: 'fries', name: 'Фритюр' },
     { id: 'sauces', name: 'Соусы' }
 ]

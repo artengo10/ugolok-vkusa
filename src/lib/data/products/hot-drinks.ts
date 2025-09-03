@@ -32,7 +32,7 @@ export const hotDrinksProducts: Product[] = [
     unit: "л",
   },
   {
-    id: 5,
+    id: 4,
     name: "Эспрессо",
     price: 80,
     description: "Крепкий черный кофе",
@@ -42,7 +42,7 @@ export const hotDrinksProducts: Product[] = [
     unit: "мл",
   },
   {
-    id: 6,
+    id: 5,
     name: "Американо",
     price: 80,
     description: "Классический черный кофе",
@@ -52,7 +52,7 @@ export const hotDrinksProducts: Product[] = [
     unit: "мл",
   },
   {
-    id: 7,
+    id: 6,
     name: "Капучино",
     price: 100,
     description: "Кофе с молочной пенкой",
@@ -62,7 +62,7 @@ export const hotDrinksProducts: Product[] = [
     unit: "мл",
   },
   {
-    id: 8,
+    id: 7,
     name: "Латте",
     price: 110,
     description: "Кофе с большим количеством молока",

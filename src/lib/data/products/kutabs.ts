@@ -2,7 +2,7 @@ import { Product } from "../products.types";
 
 export const kutabsProducts: Product[] = [
   {
-    id: 14,
+    id: 11,
     name: "Кутаб зеленью",
     price: 140,
     description: "Тонкие лепешки с зеленью",
@@ -10,7 +10,7 @@ export const kutabsProducts: Product[] = [
     image: "/images/products/kutabs/kutab-zelen.jpg.jpeg",
   },
   {
-    id: 15,
+    id: 12,
     name: "Кутаб с сыром и зеленью",
     price: 150,
     description: "Лепешки с сыром и свежей зеленью",
@@ -18,19 +18,12 @@ export const kutabsProducts: Product[] = [
     image: "/images/products/kutabs/kutab.zelen_sur.jpg.jpeg",
   },
   {
-    id: 16,
+    id: 13,
     name: "Кутаб с мясом",
     price: 150,
     description: "Традиционные лепешки с мясной начинкой",
     category: "kutabs",
     image: "/images/products/kutabs/kutab_mysu.jpg.jpeg",
   },
-  {
-    id: 17,
-    name: "Кутаб с рубцом",
-    price: 150,
-    description: "Лепешки с рубленым мясом",
-    category: "kutabs",
-    image: "/images/products/kutabs/kutab_rub.jpg.jpeg",
-  },
+  
 ];

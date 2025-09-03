@@ -2,7 +2,7 @@ import { Product } from "../products.types";
 
 export const shashlikProducts: Product[] = [
   {
-    id: 41,
+    id: 30,
     name: "Шашлык из баранины",
     price: 400,
     description: "Нежный шашлык из баранины на мангале",
@@ -12,7 +12,7 @@ export const shashlikProducts: Product[] = [
     unit: "г",
   },
   {
-    id: 42,
+    id: 31,
     name: "Шашлык из телятины",
     price: 400,
     description: "Шашлык из молодой телятины",
@@ -22,7 +22,7 @@ export const shashlikProducts: Product[] = [
     unit: "г",
   },
   {
-    id: 43,
+    id: 32,
     name: "Шашлык из свинины",
     price: 220,
     description: "Сочный шашлык из свинины",
@@ -32,7 +32,7 @@ export const shashlikProducts: Product[] = [
     unit: "г",
   },
   {
-    id: 44,
+    id: 33,
     name: "Шашлык из сёмги",
     price: 490,
     description: "Шашлык из свежей сёмги",
@@ -42,7 +42,7 @@ export const shashlikProducts: Product[] = [
     unit: "г",
   },
   {
-    id: 45,
+    id: 34,
     name: "Люля-кебаб из баранины",
     price: 330,
     description: "Традиционный люля-кебаб из баранины",
@@ -52,7 +52,7 @@ export const shashlikProducts: Product[] = [
     unit: "г",
   },
   {
-    id: 46,
+    id: 35,
     name: "Люля-кебаб из говядины",
     price: 220,
     description: "Люля-кебаб из говядины с специями",
@@ -62,7 +62,7 @@ export const shashlikProducts: Product[] = [
     unit: "г",
   },
   {
-    id: 47,
+    id: 36,
     name: "Хан кебаб",
     price: 210,
     description: "Царский кебаб по особому рецепту",
@@ -72,7 +72,7 @@ export const shashlikProducts: Product[] = [
     unit: "г",
   },
   {
-    id: 49,
+    id: 37,
     name: "Куриные крылья",
     price: 170,
     description: "Куриные крылья на мангале",
@@ -82,7 +82,7 @@ export const shashlikProducts: Product[] = [
     unit: "г",
   },
   {
-    id: 50,
+    id: 38,
     name: "Шашлык из куриной грудки",
     price: 200,
     description: "Нежный шашлык из куриной грудки",
@@ -90,7 +90,7 @@ export const shashlikProducts: Product[] = [
     image: "/images/products/shashlik/kur-grudka.jpeg",
   },
   {
-    id: 51,
+    id: 39,
     name: "Овощи на мангале",
     price: 200,
     description: "Свежие овощи, приготовленные на мангале",
@@ -98,7 +98,7 @@ export const shashlikProducts: Product[] = [
     image: "/images/products/shashlik/ovoshi.jpeg",
   },
   {
-    id: 52,
+    id: 40,
     name: "Картофель на мангале",
     price: 150,
     description: "Картофель, запеченный на мангале",
@@ -106,7 +106,7 @@ export const shashlikProducts: Product[] = [
     image: "/images/products/shashlik/cartofel.jpg.jpeg",
   },
   {
-    id: 53,
+    id: 41,
     name: "Грибы на мангале",
     price: 200,
     description: "Шампиньоны на мангале",

@@ -10,7 +10,7 @@ export default function About() {
                     <div>
                         <h2 className="text-xl font-semibold mb-4">Почему мы?</h2>
                         <p className="text-muted-foreground mb-4">
-                            Мы открылись в 2015 году с целью создавать вкусную и качественную еду для наших гостей.
+                            Мы открылись в 2024 году, весной. С целью создавать вкусную и качественную еду для наших гостей.
                             Все наши блюда готовятся из свежих продуктов ежедневно.
                         </p>
                         <p className="text-muted-foreground">

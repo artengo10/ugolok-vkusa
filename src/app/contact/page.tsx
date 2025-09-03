@@ -6,15 +6,12 @@ export default function Contact() {
                 <div className="space-y-4 text-muted-foreground">
                     <p className="flex items-center gap-2">
                         <span>📍</span>
-                        <span>Адрес: ул. Кофейная, 15</span>
+                        <span> Адрес: ул. Исполкома, 6/2 </span>
                     </p>
                     <p className="flex items-center gap-2">
                         <span>📞</span>
-                        <span>Телефон: +7 (999) 123-45-67</span>
-                    </p>
-                    <p className="flex items-center gap-2">
-                        <span>✉️</span>
-                        <span>Email: hello@coffee-shop.ru</span>
+                        <span>Телефон: +7 (969) 625-20-20</span>
+                        <span> +7 (831) 2-146-114 </span>
                     </p>
                 </div>
             </div>

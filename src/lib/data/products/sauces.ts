@@ -2,7 +2,7 @@ import { Product } from "../products.types";
 
 export const saucesProducts: Product[] = [
   {
-    id: 78,
+    id: 62,
     name: "Сырный соус",
     price: 50,
     description: "Нежный сырный соус",
@@ -10,7 +10,7 @@ export const saucesProducts: Product[] = [
     image: "/images/products/sauces/sous-sur.jpg",
   },
   {
-    id: 79,
+    id: 63,
     name: "Соус барбекю",
     price: 50,
     description: "Классический соус барбекю",
@@ -18,7 +18,7 @@ export const saucesProducts: Product[] = [
     image: "/images/products/sauces/sous-barb.jpg",
   },
   {
-    id: 80,
+    id: 64,
     name: "Кисло-сладкий соус",
     price: 50,
     description: "Кисло-сладкий соус",
@@ -26,7 +26,7 @@ export const saucesProducts: Product[] = [
     image: "/images/products/sauces/sous-ks.jpg",
   },
   {
-    id: 81,
+    id: 65,
     name: "Брусничный соус",
     price: 50,
     description: "Брусничный соус",
@@ -34,7 +34,7 @@ export const saucesProducts: Product[] = [
     image: "/images/products/sauces/sous-brus.jpg",
   },
   {
-    id: 82,
+    id: 66,
     name: "Шашлычный соус",
     price: 60,
     description: "Соус для шашлыка",
