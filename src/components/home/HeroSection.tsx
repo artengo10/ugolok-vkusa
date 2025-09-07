@@ -25,73 +25,66 @@ export default function HeroSection({ onMenuClick }: HeroSectionProps) {
             {/* Увеличиваем затемнение для лучшей читаемости */}
             <div className="absolute inset-0 z-1 bg-black/30 dark:bg-black/40" />
 
-            <div className="container relative z-10 px-4">
-                <div className="max-w-2xl mx-auto text-center space-y-9 animate-fade-in-up
-                               py-8    // ← ОТСТУПЫ ВЕРХ и НИЗ только для мобильных
-                               md:py-0 // ← Для планшетов и ПК - БЕЗ отступов">
+            <div className="container relative z-10 px-3">
+                <div className="max-w-2xl mx-auto text-center space-y-6 animate-fade-in-up
+                   py-12    // ← УВЕЛИЧИЛ для мобильных
+                   md:space-y-9 md:py-0"> {/* ← Для ПК оставляем как было */}
 
-                    {/* Адрес - добавим отступ снизу только для мобильных */}
+                    {/* Адрес - увеличил отступ снизу */}
                     <p className="text-base sm:text-lg md:text-xl text-white/90 drop-shadow-md
-                                 pb-4    // ← Отступ снизу только для мобильных
-                                 md:pb-0 // ← Для планшетов и ПК - БЕЗ отступа">
+                   pb-6    // ← УВЕЛИЧИЛ отступ
+                   md:pb-8">
                         ул. Исполкома, 6/2, Нижний Новгород
                     </p>
 
-                    {/* Заголовок - добавим отступ снизу только для мобильных */}
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white drop-shadow-lg
-                                  pb-4    // ← Отступ снизу только для мобильных
-                                  md:pb-0 // ← Для планшетов и ПК - БЕЗ отступа">
+                    {/* Заголовок - увеличил отступы */}
+                    <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-heading font-bold text-white drop-shadow-lg
+                    pb-6    // ← УВЕЛИЧИЛ отступ
+                    md:pb-15">
                         Уголок вкуса №1
                     </h1>
 
-                    {/* Описание */}
-                    <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-md
-                                 pb-6    // ← Отступ снизу только для мобильных
-                                 md:pb-0 // ← Для планшетов и ПК - БЕЗ отступа">
-                        - уютное кафе с доставкой в Нижнем Новгороде.
-                    </p>
-
-                    {/*Телефоны*/}
-            
-                    <div className="space-y-2 pb-6 md:pb-0">
+                    {/* Телефоны - увеличил отступы */}
+                    <div className="space-y-4 pb-8    // ← УВЕЛИЧИЛ отступы
+                     md:space-y-2 md:pb-0">
                         <a
                             href="tel:+79696252020"
-                            className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md font-semibold hover:text-primary transition-colors block"
+                            className="text-xl sm:text-xl md:text-2xl text-white drop-shadow-md font-semibold hover:text-primary transition-colors block"
                         >
                             +7 (969) 625-20-20
                         </a>
                         <a
                             href="tel:+78312146114"
-                            className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md font-semibold hover:text-primary transition-colors block"
+                            className="text-xl sm:text-xl md:text-2xl text-white drop-shadow-md font-semibold hover:text-primary transition-colors block"
                         >
                             +7 (831) 2-146-114
                         </a>
                     </div>
 
-                    {/* Кнопка CTA */}
-                    <div className="pt-4    // ← Отступ сверху только для мобильных
-                                  md:pt-0"> {/* ← Для планшетов и ПК - БЕЗ отступа */}
+                    {/* Кнопка CTA - УВЕЛИЧИЛ отступы вокруг кнопки */}
+                    <div className="pt-6 pb-8    // ← УВЕЛИЧИЛ отступы ВЕРХ и НИЗ
+                    md:pt-0">
                         <Button
                             size="lg"
                             onClick={onMenuClick}
                             className="text-lg px-8 py-6 
-                                     bg-white text-foreground 
-                                     dark:bg-primary dark:text-primary-foreground
-                                     border-2 border-transparent 
-                                     hover:border-primary 
-                                     transition-all
-                                     hover:bg-white/90 
-                                     dark:hover:bg-primary/90
-                                     shadow-2xl"
+                   bg-white text-foreground 
+                   dark:bg-primary dark:text-primary-foreground
+                   border-2 border-transparent 
+                   hover:border-primary 
+                   transition-all
+                   hover:bg-white/90 
+                   dark:hover:bg-primary/90
+                   shadow-2xl"
                         >
                             Смотреть меню
                         </Button>
                     </div>
 
-                    {/* Дополнительная информация */}
-                    <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 text-sm text-white/90 
-                                   pt-1    // ← Отступ сверху только для мобильных
-                                   md:pt-0">
+                    {/* Дополнительная информация - уменьшил отступ сверху */}
+                    <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 text-sm text-white/90 
+                     pt-4    // ← УМЕНЬШИЛ отступ
+                     md:pt-0">
                         <div className="flex items-center gap-2 justify-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
                             <div className="w-2 h-2 bg-white rounded-full" />
                             <span className="font-medium">Уютная атмосфера</span>

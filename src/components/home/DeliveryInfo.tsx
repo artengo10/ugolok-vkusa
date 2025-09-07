@@ -4,7 +4,7 @@ export default function DeliveryInfo() {
             <div className="bg-muted/50 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-heading font-bold mb-4">Быстрая доставка</h3>
                 <p className="text-muted-foreground mb-6">
-                    Закажите от 1000₽ и получите бесплатную доставку по городу
+                    Свежеприготовленные блюда с быстрой доставкой
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-sm">
                     <div className="flex items-center gap-2 justify-center">

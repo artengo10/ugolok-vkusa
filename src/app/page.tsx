@@ -58,6 +58,10 @@ export default function Home() {
       <HeroSection onMenuClick={scrollToMenu} />
 
       <main className="container mx-auto px-4 py-16">
+        {/* ПЕРЕМЕЩАЕМ DeliveryInfo ВВЕРХ */}
+        <DeliveryInfo />
+
+        {/* ОСТАВЛЯЕМ секцию с заголовком "Наше меню" НИЖЕ, но теперь она будет после DeliveryInfo */}
         <section ref={menuSectionRef} id="menu-section" className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Наше меню</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -66,17 +70,17 @@ export default function Home() {
           </p>
         </section>
 
-        <DeliveryInfo />
-
+        {/* ЭТОТ БЛОК ОСТАЕТСЯ НА СВОЕМ МЕСТЕ */}
         <CategoryFilter
           selectedCategory={selectedCategory}
           onCategoryChange={setSelectedCategory}
         />
 
+        {/* ЭТОТ БЛОК ОСТАЕТСЯ НА СВОЕМ МЕСТЕ */}
         <ProductGrid
           products={filteredProducts}
           onProductSelect={handleProductSelect}
-          onAddToCart={handleAddToCart} 
+          onAddToCart={handleAddToCart}
         />
       </main>
 
