@@ -85,15 +85,15 @@ export default function HeroSection({ onMenuClick }: HeroSectionProps) {
                     <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 text-sm text-white/90 
                      pt-4    // ← УМЕНЬШИЛ отступ
                      md:pt-0">
-                        <div className="flex items-center gap-2 justify-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                        <div className="flex items-center gap-2 justify-center bg-white/30 backdrop-blur-sm rounded-full px-4 py-2">
                             <div className="w-2 h-2 bg-white rounded-full" />
                             <span className="font-medium">Уютная атмосфера</span>
                         </div>
-                        <div className="flex items-center gap-2 justify-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                        <div className="flex items-center gap-2 justify-center bg-white/30 backdrop-blur-sm rounded-full px-4 py-2">
                             <div className="w-2 h-2 bg-white rounded-full" />
                             <span className="font-medium">Запоминающийся вкус</span>
                         </div>
-                        <div className="flex items-center gap-2 justify-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                        <div className="flex items-center gap-2 justify-center bg-white/30 backdrop-blur-sm rounded-full px-4 py-2">
                             <div className="w-2 h-2 bg-white rounded-full" />
                             <span className="font-medium">Быстрая доставка</span>
                         </div>

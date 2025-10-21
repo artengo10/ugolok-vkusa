@@ -6,7 +6,7 @@ import { SearchProvider } from '@/lib/contexts/search-context'
 import { Toaster } from '@/components/ui/sonner'
 import { Comfortaa } from 'next/font/google'
 import FooterMap from '@/components/layout/FooterMap'
-
+import { SimplePromoBanner } from '@/components/ui/simple-promo-banner' // ← Заменяем на новый компонент
 
 // Настройка шрифта Comfortaa
 const comfortaa = Comfortaa({
@@ -45,6 +45,7 @@ export default function RootLayout({
             <FooterMap />
             <Footer />
             <Toaster />
+            <SimplePromoBanner /> {/* ← Добавляем всплывающее уведомление */}
           </SearchProvider>
         </ThemeProvider>
       </body>

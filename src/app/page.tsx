@@ -62,12 +62,8 @@ export default function Home() {
         <DeliveryInfo />
 
         {/* ОСТАВЛЯЕМ секцию с заголовком "Наше меню" НИЖЕ, но теперь она будет после DeliveryInfo */}
-        <section ref={menuSectionRef} id="menu-section" className="text-center mb-16">
+        <section ref={menuSectionRef} id="menu-section" className="text-center mb-5">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Наше меню</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Откройте для себя новый богатый вкус от наших блюд,
-            приготовленных с любовью и вниманием к деталям
-          </p>
         </section>
 
         {/* ЭТОТ БЛОК ОСТАЕТСЯ НА СВОЕМ МЕСТЕ */}

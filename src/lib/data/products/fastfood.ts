@@ -4,7 +4,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 14,
     name: "Шаурма куриная",
-    price: 250,
+    price: 290,
     description: "Шаурма с курицей и свежими овощами",
     category: "fastfood",
     image: "/images/products/fastfood/shaurma-kurina.jpg.jpeg",
@@ -13,7 +13,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 15,
     name: "Шаурма свиная",
-    price: 260,
+    price: 300,
     description: "Шаурма со свининой и свежими овощами",
     category: "fastfood",
     image: "/images/products/fastfood/shaurma-svinina.jpg.jpeg",
@@ -21,7 +21,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 16,
     name: "Шаурма мини куриная",
-    price: 200,
+    price: 240,
     description: "Мини-шаурма с курицей",
     category: "fastfood",
     image: "/images/products/fastfood/shaurma-kuriza.jpg",
@@ -30,7 +30,7 @@ export const fastfoodProducts: Product[] = [
   {
     id: 17,
     name: "Шаурма мини свиная",
-    price: 210,
+    price: 250,
     description: "Мини-шаурма со свининой",
     category: "fastfood",
     image: "/images/products/fastfood/shaurma-svinina.jpg",

@@ -1,6 +1,6 @@
 export default function DeliveryInfo() {
     return (
-        <section className="mb-12 text-center">
+        <section className="mb-16 text-center">
             <div className="bg-muted/50 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-heading font-bold mb-4">Быстрая доставка</h3>
                 <p className="text-muted-foreground mb-6">

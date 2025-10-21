@@ -54,7 +54,7 @@ export const shashlikProducts: Product[] = [
   {
     id: 35,
     name: "Люля-кебаб из говядины",
-    price: 220,
+    price: 250,
     description: "Люля-кебаб из говядины с специями",
     category: "shashlik",
     image: "/images/products/shashlik/luly-kebab.jpeg",

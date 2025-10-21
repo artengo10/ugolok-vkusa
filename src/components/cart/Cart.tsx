@@ -219,6 +219,11 @@ export default function Cart({ open, onOpenChange }: CartProps) {
 
                 {items.length > 0 && (
                     <div className="border-t px-6 py-4 bg-muted/30">
+                        {/* Текст об акции */}
+                        <div className="text-xs text-muted-foreground text-center mb-3">
+                            При покупке 2 любых пицц = 1 мини пицца в подарок !
+                        </div>
+
                         {/* Сумма товаров */}
                         <div className="flex justify-between text-sm mb-1">
                             <span>Товары:</span>
@@ -250,6 +255,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                         {/* Итоговая сумма */}
                         <div className="flex justify-between text-lg font-semibold mb-4 border-t pt-2">
                             <span>К оплате:</span>
+                            
                             <span className={prepayment > 0 ? 'text-green-600 dark:text-green-400' : ''}>
                                 {finalTotal} ₽
                             </span>
