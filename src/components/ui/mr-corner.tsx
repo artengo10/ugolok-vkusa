@@ -27,7 +27,7 @@ export default function MrCornerError() {
                         Ой-ой-ой!
                     </h2>
                     <p className="text-muted-foreground text-lg">
-                        Мистер Уголок Вкуса крайне сожалеет, но этой страницы не существует.
+                        Мистер Шаурмёнок крайне сожалеет, но этой страницы не существует.
                     </p>
                     <p className="text-muted-foreground">
                         Возможно, вы искали что-то вкусненькое, но забрели не туда?

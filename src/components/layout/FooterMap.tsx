@@ -51,13 +51,12 @@ export default function FooterMap() {
         })
 
         const placemark = new ymaps.Placemark([56.355983, 43.858294], {
-            hintContent: 'Кафе "Уголок Вкуса"',
+            hintContent: 'Шаурмёнок',
             balloonContent: `
                 <div style="padding: 10px;">
-                    <strong>Кафе "Уголок Вкуса"</strong><br/>
-                    ул. Исполкома, 6/2, Нижний Новгород<br/>
-                    📞 +7 (969) 625-20-20<br/>
-                    📞 +7 (831) 2-146-114
+                    <strong>Шаурмёнок</strong><br/>
+                    ул. Ефремова, 3B, Нижний Новгород<br/>
+                    📞 +7 (920) 252 2328
                 </div>
             `
         }, {

@@ -58,7 +58,7 @@ export default function Footer() {
 
                     {/* Лого и описание */}
                     <div className="space-y-3">
-                        <h3 className="text-lg font-semibold text-foreground">Кафе «Уголок Вкуса»</h3>
+                        <h3 className="text-lg font-semibold text-foreground">Шаурмёнок</h3>
                         <p className="text-sm text-muted-foreground leading-relaxed">
                             Уютное кафе с доставкой в Нижнем Новгороде.
                             Готовим с любовью и вниманием к деталям.
@@ -144,7 +144,7 @@ export default function Footer() {
                 <div className="border-t border-border/50 mt-4 pt-4">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-center">
                         <p className="text-xs text-muted-foreground">
-                            © {currentYear} Кафе «Уголок Вкуса». Все права защищены.
+                            © {currentYear} Кафе «Шаурмёнок». Все права защищены.
                         </p>
                         <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
                             <Link href="/privacy" className="hover:text-foreground transition-colors">
