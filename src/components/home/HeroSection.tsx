@@ -13,7 +13,7 @@ export default function HeroSection({ onMenuClick }: HeroSectionProps) {
             <div className="absolute inset-0 z-0">
                 <Image
                     src="/banner/banner.logo.jpg"
-                    alt="Шаурмёнок"
+                    alt="Уголок Вкуса"
                     fill
                     className="object-cover scale-125 transform"
                     priority
@@ -41,7 +41,7 @@ export default function HeroSection({ onMenuClick }: HeroSectionProps) {
                     <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-heading font-bold text-white drop-shadow-lg
                     pb-6    // ← УВЕЛИЧИЛ отступ
                     md:pb-15">
-                        Шаурмёнок
+                        Уголок Вкуса
                     </h1>
 
                     {/* Телефоны - увеличил отступы */}

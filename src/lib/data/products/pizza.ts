@@ -69,7 +69,7 @@ export const pizzaProducts: Product[] = [
   {
     id: 52,
     name: "Лахмаджун",
-    price: 350,
+    price: 500,
     description: "Тонкая лепешка с мясной начинкой",
     category: "pizza",
     image: "/images/products/pizza/laxmudgun.jpg.jpeg",

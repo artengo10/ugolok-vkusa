@@ -51,10 +51,10 @@ export default function FooterMap() {
         })
 
         const placemark = new ymaps.Placemark([56.355983, 43.858294], {
-            hintContent: 'Шаурмёнок',
+            hintContent: 'Уголок вкуса',
             balloonContent: `
                 <div style="padding: 10px;">
-                    <strong>Шаурмёнок</strong><br/>
+                    <strong>Уголок вкуса</strong><br/>
                     ул. Ефремова, 3B, Нижний Новгород<br/>
                     📞 +7 (920) 252 2328
                 </div>

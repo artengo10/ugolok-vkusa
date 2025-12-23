@@ -98,7 +98,7 @@ export default function Header() {
 
                   <div className="border-t border-border mt-8 pt-6 px-4">
                     <p className="text-sm text-muted-foreground text-center">
-                      Шаурмёнок
+                      Уголок Вкуса
                     </p>
                     <p className="text-xs text-muted-foreground text-center mt-2">
                       ул. Ефремова, 3В, Нижний Новгород
@@ -112,14 +112,14 @@ export default function Header() {
               <div className="relative w-23 h-18">
                 <Image
                   src="/logo.jpg"
-                  alt="Шаурмёнок"
+                  alt="Уголок вкуса"
                   fill
                   priority={true}
                   className="object-contain"
                 />
               </div>
               <span className="text-xl font-bold text-primary hidden sm:block">
-                Шаурмёнок
+                
               </span>
             </Link>
           </div>
