@@ -262,8 +262,8 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                         </div>
 
                         <Button
-                            className="w-full"
-                            size="default"
+                            className="w-full h-9"
+                            size="sm"
                             onClick={handleOrder}
                             disabled={isFormInvalid || isSubmitting}
                         >
