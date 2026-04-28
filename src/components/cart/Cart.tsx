@@ -141,14 +141,14 @@ export default function Cart({ open, onOpenChange }: CartProps) {
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-md w-[95vw] max-w-2xl max-h-[85vh] overflow-hidden flex flex-col p-0 mx-auto my-8">
-                <DialogHeader className="px-6 pt-6 pb-4 border-b bg-muted/30">
-                    <DialogTitle className="text-2xl font-heading text-center">
+            <DialogContent className="sm:max-w-md w-[95vw] max-w-2xl max-h-[90vh] overflow-hidden flex flex-col p-0 mx-auto my-4 sm:my-8">
+                <DialogHeader className="px-4 pt-4 pb-3 sm:px-6 sm:pt-6 sm:pb-4 border-b bg-muted/30">
+                    <DialogTitle className="text-xl sm:text-2xl font-heading text-center">
                         Ваш заказ
                     </DialogTitle>
                 </DialogHeader>
 
-                <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
+                <div className="flex-1 overflow-y-auto px-4 py-3 space-y-4 sm:px-6 sm:py-4 sm:space-y-6">
                     <CartTabs value={orderType} onValueChange={setOrderType} />
 
                     <CartOrderForm
@@ -169,7 +169,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                                         key={area.id}
                                         type="button"
                                         variant={selectedArea?.id === area.id ? "default" : "outline"}
-                                        className="h-12 text-sm font-normal"
+                                        className="h-9 sm:h-12 text-xs sm:text-sm font-normal"
                                         onClick={() => handleDistrictChange(area)}
                                     >
                                         <div className="text-center">
@@ -189,7 +189,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
 
                     {items.length > 0 && (
                         <div className="border-t pt-4">
-                            <h3 className="font-semibold mb-3 text-lg">Товары в заказе</h3>
+                            <h3 className="font-semibold mb-2 text-base sm:text-lg">Товары в заказе</h3>
                             <CartItemsList />
 
                             {/* Блок с предоплатой */}
@@ -218,7 +218,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                 </div>
 
                 {items.length > 0 && (
-                    <div className="border-t px-6 py-4 bg-muted/30">
+                    <div className="border-t px-4 py-3 sm:px-6 sm:py-4 bg-muted/30">
                         {/* Текст об акции */}
                         <div className="text-xs text-muted-foreground text-center mb-3">
                             При покупке 2 любых пицц = 1 мини пицца в подарок !
@@ -239,7 +239,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                         )}
 
                         {/* Общая сумма */}
-                        <div className="flex justify-between text-lg font-semibold mb-2 border-t pt-2">
+                        <div className="flex justify-between text-base sm:text-lg font-semibold mb-2 border-t pt-2">
                             <span>Сумма заказа:</span>
                             <span>{subtotal + deliveryCost} ₽</span>
                         </div>
@@ -253,7 +253,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                         )}
 
                         {/* Итоговая сумма */}
-                        <div className="flex justify-between text-lg font-semibold mb-4 border-t pt-2">
+                        <div className="flex justify-between text-base sm:text-lg font-semibold mb-3 border-t pt-2">
                             <span>К оплате:</span>
                             
                             <span className={prepayment > 0 ? 'text-green-600 dark:text-green-400' : ''}>
@@ -263,7 +263,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
 
                         <Button
                             className="w-full"
-                            size="lg"
+                            size="default"
                             onClick={handleOrder}
                             disabled={isFormInvalid || isSubmitting}
                         >

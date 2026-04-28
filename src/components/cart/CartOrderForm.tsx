@@ -22,7 +22,7 @@ export default function CartOrderForm({
     disabled = false
 }: CartOrderFormProps) {
     return (
-        <div className="space-y-4">
+        <div className="space-y-3">
             {/* Имя */}
             <div className="space-y-2">
                 <Label htmlFor="name" className="text-sm font-medium">
