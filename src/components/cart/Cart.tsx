@@ -141,7 +141,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-md w-[95vw] max-w-2xl max-h-[90vh] overflow-hidden flex flex-col p-0 mx-auto my-4 sm:my-8">
+            <DialogContent className="sm:max-w-md w-[90vw] max-w-2xl max-h-[80vh] overflow-hidden flex flex-col p-0 mx-auto my-3 sm:my-6">
                 <DialogHeader className="px-4 pt-4 pb-3 sm:px-6 sm:pt-6 sm:pb-4 border-b bg-muted/30">
                     <DialogTitle className="text-xl sm:text-2xl font-heading text-center">
                         Ваш заказ
@@ -262,8 +262,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                         </div>
 
                         <Button
-                            className="w-full h-9"
-                            size="sm"
+                            className="w-full h-14 text-base font-semibold"
                             onClick={handleOrder}
                             disabled={isFormInvalid || isSubmitting}
                         >
