@@ -54,14 +54,13 @@ ${orderData.prepayment > 0 ? `Предоплата: ${orderData.prepayment}₽\n
 
     console.log("Sending to Max...");
 
-    const response = await fetch("https://platform-api.max.ru/messages", {
+    const response = await fetch(`https://platform-api.max.ru/messages?chat_id=${chatId}`, {
       method: "POST",
       headers: {
         "Authorization": token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        chat_id: Number(chatId),
         text: message,
       }),
     });
