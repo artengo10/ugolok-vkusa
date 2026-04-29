@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isBlacklisted, formatPhone } from "@/lib/validation";
 
-
 interface CartItem {
   name: string;
   quantity: number;
@@ -13,76 +12,65 @@ export async function POST(request: NextRequest) {
     const orderData = await request.json();
     console.log("Order received:", orderData);
 
-    const token = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
+    const token = process.env.MAX_BOT_TOKEN;
+    const chatId = process.env.MAX_CHAT_ID;
 
     console.log("Token exists:", !!token);
     console.log("Chat ID exists:", !!chatId);
 
     if (!token || !chatId) {
-      console.error("Missing Telegram credentials");
+      console.error("Missing Max bot credentials");
       return NextResponse.json(
-        { error: "Telegram bot not configured" },
+        { error: "Bot not configured" },
         { status: 500 }
       );
     }
+
     const formattedPhone = formatPhone(orderData.phone);
     if (isBlacklisted(formattedPhone)) {
       console.log("Blacklisted phone:", formattedPhone);
       return NextResponse.json({ error: "Order rejected" }, { status: 403 });
     }
-    // Форматируем сообщение
-    const message = `
-🛒 НОВЫЙ ЗАКАЗ
 
-<b>Клиент:</b> ${orderData.name}
-<b>Телефон:</b> ${orderData.phone}
-<b>Тип заказа:</b> ${orderData.type === "delivery" ? "Доставка" : "Самовывоз"}
+    const message = `🛒 НОВЫЙ ЗАКАЗ
 
-${
-  orderData.type === "delivery"
-    ? `<b>Адрес:</b> ${orderData.address}`
-    : `<b>Время самовывоза:</b> ${orderData.pickupTime}`
-}
+Клиент: ${orderData.name}
+Телефон: ${orderData.phone}
+Тип заказа: ${orderData.type === "delivery" ? "Доставка" : "Самовывоз"}
 
-<b>Товары:</b>
+${orderData.type === "delivery"
+  ? `Адрес: ${orderData.address}\nРайон: ${orderData.district}`
+  : `Время самовывоза: ${orderData.pickupTime}`}
+
+Товары:
 ${orderData.items
-  .map(
-    (item: CartItem) =>
-      `• ${item.name} x${item.quantity} - ${item.price * item.quantity}₽`
-  )
+  .map((item: CartItem) => `• ${item.name} x${item.quantity} - ${item.price * item.quantity}₽`)
   .join("\n")}
 
-<b>Итого:</b> ${orderData.total}₽
-${orderData.prepayment > 0 ? `<b>Предоплата:</b> ${orderData.prepayment}₽` : ""}
-<b>К оплате:</b> ${orderData.finalTotal}₽
+Итого: ${orderData.total}₽
+${orderData.prepayment > 0 ? `Предоплата: ${orderData.prepayment}₽\n` : ""}К оплате: ${orderData.finalTotal}₽
 
-<b>Время заказа:</b> ${new Date().toLocaleString("ru-RU")}
-    `.trim();
+Время заказа: ${new Date().toLocaleString("ru-RU")}`;
 
-    console.log("Sending to Telegram...");
+    console.log("Sending to Max...");
 
-    // Отправляем в Telegram
-    const response = await fetch(
-      `https://api.telegram.org/bot${token}/sendMessage`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message,
-          parse_mode: "HTML",
-        }),
-      }
-    );
+    const response = await fetch("https://platform-api.max.ru/messages", {
+      method: "POST",
+      headers: {
+        "Authorization": token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: Number(chatId),
+        text: message,
+      }),
+    });
 
     const responseData = await response.json();
-    console.log("Telegram response:", responseData);
+    console.log("Max response:", responseData);
 
     if (!response.ok) {
-      throw new Error(`Telegram API error: ${JSON.stringify(responseData)}`);
+      throw new Error(`Max API error: ${JSON.stringify(responseData)}`);
     }
 
     return NextResponse.json({ success: true });
