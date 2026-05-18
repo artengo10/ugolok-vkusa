@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import MapReviews from '@/components/map/MapReviews'
 
 // Интерфейсы для типизации
@@ -12,9 +13,11 @@ interface YMaps {
 }
 
 export default function FooterMap() {
+    const pathname = usePathname()
     const [isMapsLoaded, setIsMapsLoaded] = useState(false)
 
     useEffect(() => {
+        if (pathname === '/cart') return
         if ((window as unknown as { ymaps: YMaps }).ymaps) {
             setIsMapsLoaded(true)
             initMap()
@@ -67,6 +70,8 @@ export default function FooterMap() {
         // @ts-expect-error - Яндекс Карты методы не типизированы
         map.geoObjects.add(placemark)
     }
+
+    if (pathname === '/cart') return null
 
     return (
         <section className="w-full bg-muted/50 py-8">
