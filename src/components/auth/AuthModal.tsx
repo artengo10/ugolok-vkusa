@@ -50,8 +50,8 @@ export default function AuthModal({ open, onClose }: Props) {
       })
       if (!res.ok) throw new Error((await res.json()).error || 'Ошибка')
       setStep('otp')
-    } catch (e: any) {
-      setError(e.message)
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : 'Ошибка')
     } finally {
       setLoading(false)
     }
@@ -71,8 +71,8 @@ export default function AuthModal({ open, onClose }: Props) {
       const data = await res.json()
       setAuth(data.user, data.token)
       handleClose()
-    } catch (e: any) {
-      setError(e.message)
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : 'Ошибка')
     } finally {
       setLoading(false)
     }
