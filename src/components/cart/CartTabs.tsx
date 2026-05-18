@@ -1,11 +1,5 @@
 'use client'
 
-import {
-    Tabs,
-    TabsList,
-    TabsTrigger,
-} from '@/components/ui/tabs'
-
 interface CartTabsProps {
     value: string
     onValueChange: (value: string) => void
@@ -13,21 +7,23 @@ interface CartTabsProps {
 
 export default function CartTabs({ value, onValueChange }: CartTabsProps) {
     return (
-        <Tabs value={value} onValueChange={onValueChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 bg-muted/50 p-1 rounded-lg">
-                <TabsTrigger
-                    value="delivery"
-                    className="rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm"
-                >
-                    Доставка
-                </TabsTrigger>
-                <TabsTrigger
-                    value="pickup"
-                    className="rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm"
-                >
-                    Самовывоз
-                </TabsTrigger>
-            </TabsList>
-        </Tabs>
+        <div className="flex gap-1 p-1 rounded-xl" style={{ backgroundColor: 'oklch(0.55 0.12 55.7 / 0.15)' }}>
+            {(['delivery', 'pickup'] as const).map((type) => {
+                const active = value === type
+                return (
+                    <button
+                        key={type}
+                        onClick={() => onValueChange(type)}
+                        className="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all"
+                        style={active
+                            ? { backgroundColor: 'oklch(0.55 0.12 55.7)', color: '#fff' }
+                            : { backgroundColor: 'transparent', color: 'oklch(0.55 0.12 55.7)' }
+                        }
+                    >
+                        {type === 'delivery' ? '🚚 Доставка' : '🏠 Самовывоз'}
+                    </button>
+                )
+            })}
+        </div>
     )
 }

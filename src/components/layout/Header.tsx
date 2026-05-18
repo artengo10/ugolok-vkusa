@@ -1,17 +1,20 @@
 'use client'
 
-
 import { Product } from '@/lib/data'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { ShoppingCart, Sun, Moon, Search, Menu } from 'lucide-react'
+import { ShoppingCart, Search, Menu, User, Sun, Moon, LogOut, Home, Info, Phone, Smartphone } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useCartStore } from '@/lib/stores/cart-store'
+import { useAuthStore } from '@/lib/stores/auth-store'
 import Cart from '@/components/cart/Cart'
 import SearchDialog from '@/components/search/SearchDialog'
+import LoginModal from '@/components/auth/LoginModal'
+import RegisterModal from '@/components/auth/RegisterModal'
+import ProfileModal from '@/components/profile/ProfileModal'
 import { useSearch } from '@/lib/contexts/search-context'
 import {
   Sheet,
@@ -21,88 +24,157 @@ import {
 } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 
-// Массив навигационных ссылок
 const navItems = [
-  { href: '/', label: 'Главная' },
-  { href: '/about', label: 'О нас' },
-  { href: '/contact', label: 'Контакты' },
+  { href: '/', label: 'Главная', icon: Home },
+  { href: '/about', label: 'О нас', icon: Info },
+  { href: '/contact', label: 'Контакты', icon: Phone },
 ]
 
 export default function Header() {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const totalItems = useCartStore((state) => state.totalItems())
+  const { user, isLoggedIn, logout } = useAuthStore()
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isLoginOpen, setIsLoginOpen] = useState(false)
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false)
+  const [isProfileOpen, setIsProfileOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { setSelectedProduct } = useSearch()
   const [mounted, setMounted] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  useEffect(() => { setMounted(true) }, [])
+
   const handleSearchSelect = (product: Product) => {
     setSelectedProduct(product)
     setIsSearchOpen(false)
   }
 
-  // Функция для проверки активной ссылки
-  const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === '/'
-    }
-    return pathname.startsWith(href)
-  }
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href)
 
   return (
     <>
       <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-2 py-2 flex justify-between items-center">
-          {/* Логотип и мобильное меню */}
+
+          {/* Лого + бургер (мобайл) */}
           <div className="flex items-center gap-4">
-            {/* Бургер-меню для мобильных */}
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="md:hidden h-9 w-9">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-64">
-                <SheetTitle className="sr-only">Меню навигации</SheetTitle>
-                <div className="flex flex-col h-full py-6">
-                  <div className="flex justify-between items-center mb-8 px-4">
+
+              <SheetContent side="left" className="w-72 p-0">
+                <SheetTitle className="sr-only">Меню</SheetTitle>
+                <div className="flex flex-col h-full">
+
+                  {/* Блок профиля в бургере */}
+                  <div className="p-5 border-b bg-secondary/40">
+                    {isLoggedIn && user ? (
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                          <User className="h-5 w-5 text-primary" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-semibold text-sm truncate">{user.name ?? user.email}</p>
+                          <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-8 w-8 shrink-0"
+                          onClick={() => { logout(); setIsMenuOpen(false) }}
+                        >
+                          <LogOut className="h-4 w-4 text-muted-foreground" />
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col gap-2">
+                        <p className="text-sm text-muted-foreground mb-1">Войдите в аккаунт</p>
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            className="flex-1"
+                            onClick={() => { setIsLoginOpen(true); setIsMenuOpen(false) }}
+                          >
+                            Войти
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="flex-1"
+                            onClick={() => { setIsRegisterOpen(true); setIsMenuOpen(false) }}
+                          >
+                            Регистрация
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  <nav className="flex-1 space-y-3 px-4">
-                    {navItems.map((item) => (
+                  {/* Навигация */}
+                  <nav className="flex-1 p-4 space-y-1">
+                    {navItems.map(({ href, label, icon: Icon }) => (
                       <Link
-                        key={item.href}
-                        href={item.href}
+                        key={href}
+                        href={href}
                         className={cn(
-                          "block px-4 py-3 text-lg font-medium hover:bg-accent rounded-lg transition-colors",
-                          isActive(item.href) && "bg-accent text-foreground font-semibold"
+                          'flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-medium transition-colors hover:bg-accent',
+                          isActive(href) && 'bg-accent font-semibold'
                         )}
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        {item.label}
+                        <Icon className="h-5 w-5 text-muted-foreground" />
+                        {label}
                       </Link>
                     ))}
                     <Link
                       href="/#menu-section"
-                      className="block px-4 py-3 text-lg font-medium hover:bg-accent rounded-lg transition-colors"
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-medium transition-colors hover:bg-accent"
                       onClick={() => setIsMenuOpen(false)}
                     >
+                      <ShoppingCart className="h-5 w-5 text-muted-foreground" />
                       Меню
                     </Link>
                   </nav>
 
-                  <div className="border-t border-border mt-8 pt-6 px-4">
-                    <p className="text-sm text-muted-foreground text-center">
-                      Уголок Вкуса
-                    </p>
-                    <p className="text-xs text-muted-foreground text-center mt-2">
-                      ул. Ефремова, 3В, Нижний Новгород
-                    </p>
+                  {/* Скачать приложение */}
+                  <div className="px-4 pb-3">
+                    <a
+                      href="#"
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary hover:bg-primary/90 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <Smartphone className="h-5 w-5 text-primary-foreground shrink-0" />
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-sm font-semibold text-primary-foreground">Скачать приложение</span>
+                        <span className="text-xs text-primary-foreground/80">Копи баллы и заказывай быстрее</span>
+                      </div>
+                    </a>
+                  </div>
+
+                  {/* Смена темы в бургере */}
+                  <div className="p-4 border-t">
+                    {mounted && (
+                      <button
+                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                        className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg hover:bg-accent transition-colors"
+                      >
+                        {theme === 'dark'
+                          ? <Moon className="h-5 w-5 text-muted-foreground" />
+                          : <Sun className="h-5 w-5 text-muted-foreground" />}
+                        <span className="text-base font-medium">
+                          {theme === 'dark' ? 'Тёмная тема' : 'Светлая тема'}
+                        </span>
+                        <span className="ml-auto text-xs text-muted-foreground">
+                          {theme === 'dark' ? 'Выкл.' : 'Вкл.'}
+                        </span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </SheetContent>
@@ -114,35 +186,33 @@ export default function Header() {
                   src="/logo.jpg"
                   alt="Уголок вкуса"
                   fill
-                  priority={true}
+                  priority
                   className="object-contain"
                 />
               </div>
-              <span className="text-xl font-bold text-primary hidden sm:block">
-                
-              </span>
             </Link>
           </div>
 
           {/* Десктопная навигация */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-6 ">
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
+          <nav className="hidden md:flex items-center gap-1 lg:gap-6">
+            {navItems.map(({ href, label }) => (
+              <Link key={href} href={href}>
                 <Button
                   variant="ghost"
                   size="sm"
                   className={cn(
-                    "text-muted-foreground hover:text-foreground",
-                    isActive(item.href) && "text-foreground font-semibold bg-accent"
+                    'text-muted-foreground hover:text-foreground',
+                    isActive(href) && 'text-foreground font-semibold bg-accent'
                   )}
                 >
-                  {item.label}
+                  {label}
                 </Button>
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          {/* Правые кнопки */}
+          <div className="flex items-center gap-2">
             <Button
               variant="outline"
               size="icon"
@@ -152,19 +222,31 @@ export default function Header() {
               <Search className="h-4 w-4" />
             </Button>
 
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="h-9 w-9" // ← УБРАТЬ hidden sm:flex
-            >
-              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Переключить тему</span>
-            </Button>
+            {/* Профиль */}
+            {mounted && isLoggedIn && user ? (
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-9 w-9 relative"
+                onClick={() => setIsProfileOpen(true)}
+                title={user.email}
+              >
+                <User className="h-4 w-4 text-primary" />
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-9 w-9"
+                onClick={() => setIsLoginOpen(true)}
+                title="Войти"
+              >
+                <User className="h-4 w-4" />
+              </Button>
+            )}
 
+            {/* Корзина */}
             <Button
-        
               className="h-9 w-9 relative"
               size="icon"
               onClick={() => setIsCartOpen(true)}
@@ -187,6 +269,20 @@ export default function Header() {
             open={isSearchOpen}
             onOpenChange={setIsSearchOpen}
             onProductSelect={handleSearchSelect}
+          />
+          <LoginModal
+            open={isLoginOpen}
+            onClose={() => setIsLoginOpen(false)}
+            onSwitchToRegister={() => setIsRegisterOpen(true)}
+          />
+          <RegisterModal
+            open={isRegisterOpen}
+            onClose={() => setIsRegisterOpen(false)}
+            onSwitchToLogin={() => setIsLoginOpen(true)}
+          />
+          <ProfileModal
+            open={isProfileOpen}
+            onClose={() => setIsProfileOpen(false)}
           />
         </>
       )}

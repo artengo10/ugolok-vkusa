@@ -25,7 +25,7 @@ export default function CartOrderForm({
         <div className="space-y-3">
             {/* Имя */}
             <div className="space-y-2">
-                <Label htmlFor="name" className="text-sm font-medium">
+                <Label htmlFor="name" className="text-sm font-semibold text-foreground">
                     Имя *
                 </Label>
                 <Input
@@ -41,7 +41,7 @@ export default function CartOrderForm({
 
             {/* Телефон */}
             <div className="space-y-2">
-                <Label htmlFor="phone" className="text-sm font-medium">
+                <Label htmlFor="phone" className="text-sm font-semibold text-foreground">
                     Телефон *
                 </Label>
                 <Input
@@ -57,7 +57,7 @@ export default function CartOrderForm({
 
             {orderType === 'delivery' && (
                 <div className="space-y-2">
-                    <Label htmlFor="address" className="text-sm font-medium">
+                    <Label htmlFor="address" className="text-sm font-semibold text-foreground">
                         Адрес доставки *
                     </Label>
                     <Input
@@ -74,7 +74,7 @@ export default function CartOrderForm({
 
             {orderType === 'pickup' && (
                 <div className="space-y-2">
-                    <Label htmlFor="pickupTime" className="text-sm font-medium">
+                    <Label htmlFor="pickupTime" className="text-sm font-semibold text-foreground">
                         Время забрать *
                     </Label>
                     <Input

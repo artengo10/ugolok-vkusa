@@ -32,7 +32,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Order rejected" }, { status: 403 });
     }
 
-    const message = `🛒 НОВЫЙ ЗАКАЗ
+    const sourceLabel = orderData.source === 'app' ? '📱 ЗАКАЗ С ПРИЛОЖЕНИЯ' : '🌐 ЗАКАЗ С САЙТА'
+    const message = `🛒 НОВЫЙ ЗАКАЗ — ${sourceLabel}
 
 Клиент: ${orderData.name}
 Телефон: ${orderData.phone}

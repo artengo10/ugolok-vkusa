@@ -75,11 +75,3 @@ export const pizzaProducts: Product[] = [
     image: "/images/products/pizza/laxmudgun.jpg.jpeg",
   },
 ];
-export const miniPizzaGift: Product = {
-  id: 100, // Уникальный ID для подарка
-  name: "Мини пицца (подарок)",
-  price: 0, // Бесплатно!
-  description: "Мини пицца в подарок при заказе 2 любых пицц",
-  category: "pizza",
-  image: "/images/products/pizza/pizza-margarita.jpg.jpeg",
-};

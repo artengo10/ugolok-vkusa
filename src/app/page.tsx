@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { HeroSection, DeliveryInfo } from '@/components/home'
+import { HeroSection } from '@/components/home'
 import { ProductModal, ProductGrid, CategoryFilter } from '@/components/products'
 import { useCartStore } from '@/lib/stores/cart-store'
 import { products, Product } from '@/lib/data'
@@ -58,12 +58,12 @@ export default function Home() {
       <HeroSection onMenuClick={scrollToMenu} />
 
       <main className="container mx-auto px-4 py-16">
-        {/* ПЕРЕМЕЩАЕМ DeliveryInfo ВВЕРХ */}
-        <DeliveryInfo />
-
-        {/* ОСТАВЛЯЕМ секцию с заголовком "Наше меню" НИЖЕ, но теперь она будет после DeliveryInfo */}
+        {/* Секция меню */}
         <section ref={menuSectionRef} id="menu-section" className="text-center mb-5">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Наше меню</h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-2">Наше меню</h2>
+          <p className="text-muted-foreground text-sm mb-6">
+            Шаурма, пицца, шашлык, кутабы — доставка в Сормовском районе и по всему Нижнему Новгороду
+          </p>
         </section>
 
         {/* ЭТОТ БЛОК ОСТАЕТСЯ НА СВОЕМ МЕСТЕ */}

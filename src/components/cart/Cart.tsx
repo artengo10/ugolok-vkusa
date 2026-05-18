@@ -9,6 +9,7 @@ import {
     DialogTitle,
 } from '@/components/ui/dialog'
 import { useCartStore } from '@/lib/stores/cart-store'
+import { useAuthStore } from '@/lib/stores/auth-store'
 import CartTabs from './CartTabs'
 import CartOrderForm from './CartOrderForm'
 import CartItemsList from './CartItemsList'
@@ -17,6 +18,8 @@ import {
     isValidPhone,
     isBlacklisted
 } from '@/lib/validation'
+
+const BACKEND = process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : '/api'
 
 // Добавляем константы районов прямо в компонент
 const DELIVERY_AREAS = [
@@ -38,11 +41,12 @@ export default function Cart({ open, onOpenChange }: CartProps) {
         phone: '',
         address: '',
         pickupTime: '',
-        district: '' // Добавляем поле для района
+        district: ''
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
 
     const { items, totalPrice, clearCart, calculatePrepayment, selectedArea, setDeliveryArea } = useCartStore()
+    const { token } = useAuthStore()
     const subtotal = totalPrice()
     const deliveryCost = orderType === 'delivery' && selectedArea ? selectedArea.price : 0
     const prepayment = calculatePrepayment(orderType, subtotal)
@@ -87,25 +91,23 @@ export default function Cart({ open, onOpenChange }: CartProps) {
         setIsSubmitting(true)
 
         try {
-            // Отправляем заказ в Telegram (добавляем район в данные)
-            const response = await fetch('/api/telegram/order', {
+            const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+            if (token) headers['Authorization'] = `Bearer ${token}`
+
+            const response = await fetch(`${BACKEND}/orders`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers,
                 body: JSON.stringify({
                     name: formData.name,
                     phone: formData.phone,
-                    type: orderType,
-                    address: formData.address,
-                    district: selectedArea?.name || '', // Добавляем район
-                    pickupTime: formData.pickupTime,
-                    items: items,
-                    subtotal: subtotal,
+                    type: orderType === 'delivery' ? 'DELIVERY' : 'PICKUP',
+                    address: formData.address || undefined,
+                    district: selectedArea?.name || undefined,
+                    pickupTime: formData.pickupTime || undefined,
+                    items: items.map(i => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity })),
                     delivery: deliveryCost,
-                    total: subtotal + deliveryCost,
-                    prepayment: prepayment,
-                    finalTotal: finalTotal
+                    prepayment,
+                    source: 'website',
                 })
             })
 
@@ -160,9 +162,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                     {/* ДОБАВЛЯЕМ ВЫБОР РАЙОНА ДЛЯ ДОСТАВКИ */}
                     {orderType === 'delivery' && (
                         <div className="space-y-3">
-                            <label className="text-sm font-medium">Район доставки *
-                            </label>
-                                <p className="text-xs text-muted-foreground">(выбор района обязателен)</p>
+                            <label className="text-sm font-semibold text-foreground">Выберите район *</label>
                             <div className="grid grid-cols-2 gap-2">
                                 {DELIVERY_AREAS.map((area) => (
                                     <Button
@@ -219,11 +219,6 @@ export default function Cart({ open, onOpenChange }: CartProps) {
 
                 {items.length > 0 && (
                     <div className="border-t px-4 py-3 sm:px-6 sm:py-4 bg-muted/30">
-                        {/* Текст об акции */}
-                        <div className="text-xs text-muted-foreground text-center mb-3">
-                            При покупке 2 любых пицц = 1 мини пицца в подарок !
-                        </div>
-
                         {/* Сумма товаров */}
                         <div className="flex justify-between text-sm mb-1">
                             <span>Товары:</span>
