@@ -10,7 +10,6 @@ import { ShoppingCart, Search, Menu, User, Sun, Moon, LogOut, Home, Info, Phone,
 import { useTheme } from 'next-themes'
 import { useCartStore } from '@/lib/stores/cart-store'
 import { useAuthStore } from '@/lib/stores/auth-store'
-import Cart from '@/components/cart/Cart'
 import SearchDialog from '@/components/search/SearchDialog'
 import LoginModal from '@/components/auth/LoginModal'
 import RegisterModal from '@/components/auth/RegisterModal'
@@ -35,7 +34,6 @@ export default function Header() {
   const { theme, setTheme } = useTheme()
   const totalItems = useCartStore((state) => state.totalItems())
   const { user, isLoggedIn, logout } = useAuthStore()
-  const [isCartOpen, setIsCartOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const [isRegisterOpen, setIsRegisterOpen] = useState(false)
@@ -246,25 +244,22 @@ export default function Header() {
             )}
 
             {/* Корзина */}
-            <Button
-              className="h-9 w-9 relative"
-              size="icon"
-              onClick={() => setIsCartOpen(true)}
-            >
-              <ShoppingCart className="h-4 w-4" />
+            <Link href="/cart" className="relative">
+              <Button className="h-9 w-9 relative" size="icon">
+                <ShoppingCart className="h-4 w-4" />
+              </Button>
               {mounted && totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary-foreground text-primary text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border border-primary">
+                <span className="absolute -top-2 -right-2 bg-primary-foreground text-primary text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border border-primary pointer-events-none">
                   {totalItems}
                 </span>
               )}
-            </Button>
+            </Link>
           </div>
         </div>
       </header>
 
       {mounted && (
         <>
-          <Cart open={isCartOpen} onOpenChange={setIsCartOpen} />
           <SearchDialog
             open={isSearchOpen}
             onOpenChange={setIsSearchOpen}
