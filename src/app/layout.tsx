@@ -53,7 +53,7 @@ export default function RootLayout({
     <html lang="ru" className={comfortaa.className} suppressHydrationWarning>
       <head><JsonLd /></head>
       <body className="flex flex-col min-h-screen">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <SearchProvider>
             <AppBanner />
             <Header />
