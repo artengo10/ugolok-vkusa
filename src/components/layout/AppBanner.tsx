@@ -41,12 +41,12 @@ export default function AppBanner() {
       </div>
 
       {/* Кнопка */}
-      <Link
-        href="#"
+      <button
+        onClick={() => alert('Приложение скоро появится в App Store!')}
         className="shrink-0 bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
       >
         Скачать
-      </Link>
+      </button>
     </div>
   )
 }
