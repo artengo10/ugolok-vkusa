@@ -11,8 +11,7 @@ import { useTheme } from 'next-themes'
 import { useCartStore } from '@/lib/stores/cart-store'
 import { useAuthStore } from '@/lib/stores/auth-store'
 import SearchDialog from '@/components/search/SearchDialog'
-import LoginModal from '@/components/auth/LoginModal'
-import RegisterModal from '@/components/auth/RegisterModal'
+import AuthModal from '@/components/auth/AuthModal'
 import ProfileModal from '@/components/profile/ProfileModal'
 import { useSearch } from '@/lib/contexts/search-context'
 import {
@@ -35,8 +34,8 @@ export default function Header() {
   const totalItems = useCartStore((state) => state.totalItems())
   const { user, isLoggedIn, logout } = useAuthStore()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [isLoginOpen, setIsLoginOpen] = useState(false)
-  const [isRegisterOpen, setIsRegisterOpen] = useState(false)
+  const [isAuthOpen, setIsAuthOpen] = useState(false)
+  const [authTab, setAuthTab] = useState<'login' | 'register'>('login')
   const [isProfileOpen, setIsProfileOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { setSelectedProduct } = useSearch()
@@ -97,7 +96,7 @@ export default function Header() {
                           <Button
                             size="sm"
                             className="flex-1"
-                            onClick={() => { setIsLoginOpen(true); setIsMenuOpen(false) }}
+                            onClick={() => { setAuthTab('login'); setIsAuthOpen(true); setIsMenuOpen(false) }}
                           >
                             Войти
                           </Button>
@@ -105,7 +104,7 @@ export default function Header() {
                             size="sm"
                             variant="outline"
                             className="flex-1"
-                            onClick={() => { setIsRegisterOpen(true); setIsMenuOpen(false) }}
+                            onClick={() => { setAuthTab('register'); setIsAuthOpen(true); setIsMenuOpen(false) }}
                           >
                             Регистрация
                           </Button>
@@ -236,7 +235,7 @@ export default function Header() {
                 variant="outline"
                 size="icon"
                 className="h-9 w-9"
-                onClick={() => setIsLoginOpen(true)}
+                onClick={() => { setAuthTab('login'); setIsAuthOpen(true) }}
                 title="Войти"
               >
                 <User className="h-4 w-4" />
@@ -265,15 +264,10 @@ export default function Header() {
             onOpenChange={setIsSearchOpen}
             onProductSelect={handleSearchSelect}
           />
-          <LoginModal
-            open={isLoginOpen}
-            onClose={() => setIsLoginOpen(false)}
-            onSwitchToRegister={() => setIsRegisterOpen(true)}
-          />
-          <RegisterModal
-            open={isRegisterOpen}
-            onClose={() => setIsRegisterOpen(false)}
-            onSwitchToLogin={() => setIsLoginOpen(true)}
+          <AuthModal
+            open={isAuthOpen}
+            onClose={() => setIsAuthOpen(false)}
+            initialTab={authTab}
           />
           <ProfileModal
             open={isProfileOpen}

@@ -18,11 +18,12 @@ type RegStep = 'form' | 'otp'
 interface Props {
   open: boolean
   onClose: () => void
+  initialTab?: 'login' | 'register'
 }
 
-export default function AuthModal({ open, onClose }: Props) {
+export default function AuthModal({ open, onClose, initialTab = 'login' }: Props) {
   const { setAuth } = useAuthStore()
-  const [tab, setTab] = useState<Tab>('login')
+  const [tab, setTab] = useState<Tab>(initialTab)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
