@@ -64,7 +64,7 @@ export default function ProfileModal({ open, onClose }: Props) {
           </div>
           <p className="text-xs text-amber-700 dark:text-amber-400 pl-6">
             Потратить можно в{' '}
-            <a href="#" className="underline font-semibold hover:opacity-80">приложении</a>
+            <a href="#" className="underline font-semibold hover:opacity-80" onClick={(e) => { e.preventDefault(); alert('Приложение скоро появится в App Store!'); }}>приложении</a>
           </p>
         </div>
 

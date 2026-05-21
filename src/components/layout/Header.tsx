@@ -145,7 +145,7 @@ export default function Header() {
                     <a
                       href="#"
                       className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary hover:bg-primary/90 transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); alert('Приложение скоро появится в App Store!'); }}
                     >
                       <Smartphone className="h-5 w-5 text-primary-foreground shrink-0" />
                       <div className="flex flex-col min-w-0">
