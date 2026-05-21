@@ -8,7 +8,9 @@ import { Label } from '@/components/ui/label'
 import { useAuthStore } from '@/lib/stores/auth-store'
 import { Loader2, Eye, EyeOff } from 'lucide-react'
 
-const BACKEND = process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : '/api'
+const BACKEND = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+  ? 'https://ugolok-vkusa1.ru/api'
+  : '/api'
 
 type Tab = 'login' | 'register'
 type RegStep = 'form' | 'otp'
@@ -66,7 +68,7 @@ export default function AuthModal({ open, onClose }: Props) {
 
   async function handleRegisterStep1() {
     if (!regName.trim() || !regEmail.trim() || !regPassword) { setError('Заполните все поля'); return }
-    if (regPassword.length < 8) { setError('Пароль должен быть не менее 8 символов'); return }
+    if (regPassword.length < 6) { setError('Пароль должен быть не менее 6 символов'); return }
     setError(''); setLoading(true)
     try {
       const res = await fetch(`${BACKEND}/auth/register`, {
