@@ -210,15 +210,6 @@ export default function Header() {
 
           {/* Правые кнопки */}
           <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setIsSearchOpen(true)}
-              className="h-9 w-9"
-            >
-              <Search className="h-4 w-4" />
-            </Button>
-
             {/* Профиль */}
             {mounted && isLoggedIn && user ? (
               <Button
@@ -241,6 +232,15 @@ export default function Header() {
                 <User className="h-4 w-4" />
               </Button>
             )}
+
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setIsSearchOpen(true)}
+              className="h-9 w-9"
+            >
+              <Search className="h-4 w-4" />
+            </Button>
 
             {/* Корзина */}
             <Link href="/cart" className="relative">
