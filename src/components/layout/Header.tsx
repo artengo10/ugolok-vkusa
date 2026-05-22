@@ -215,21 +215,21 @@ export default function Header() {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-9 w-9 relative"
+                className="h-10 w-10 relative"
                 onClick={() => setIsProfileOpen(true)}
                 title={user.email}
               >
-                <User className="h-4 w-4 text-primary" />
+                <User className="h-5 w-5 text-primary" />
               </Button>
             ) : (
               <Button
                 variant="outline"
                 size="icon"
-                className="h-9 w-9"
+                className="h-10 w-10"
                 onClick={() => { setAuthTab('login'); setIsAuthOpen(true) }}
                 title="Войти"
               >
-                <User className="h-4 w-4" />
+                <User className="h-5 w-5" />
               </Button>
             )}
 
@@ -237,15 +237,15 @@ export default function Header() {
               variant="outline"
               size="icon"
               onClick={() => setIsSearchOpen(true)}
-              className="h-9 w-9"
+              className="h-10 w-10"
             >
-              <Search className="h-4 w-4" />
+              <Search className="h-5 w-5" />
             </Button>
 
             {/* Корзина */}
             <Link href="/cart" className="relative">
-              <Button className="h-9 w-9 relative" size="icon">
-                <ShoppingCart className="h-4 w-4" />
+              <Button className="h-10 w-10 relative" size="icon">
+                <ShoppingCart className="h-5 w-5" />
               </Button>
               {mounted && totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary-foreground text-primary text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border border-primary pointer-events-none">
