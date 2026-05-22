@@ -59,12 +59,11 @@ export default function ProfileModal({ open, onClose }: Props) {
           <div className="flex items-center gap-2">
             <Star className="h-4 w-4 text-amber-500 fill-amber-500 shrink-0" />
             <span className="text-sm font-medium text-amber-800 dark:text-amber-200">
-              Бонусные баллы: <strong>{profile.bonusPoints}</strong>
+              Бонусных баллов: <strong>{profile.bonusPoints}</strong>
             </span>
           </div>
           <p className="text-xs text-amber-700 dark:text-amber-400 pl-6">
-            Потратить можно в{' '}
-            <a href="#" className="underline font-semibold hover:opacity-80" onClick={(e) => { e.preventDefault(); alert('Приложение скоро появится в App Store!'); }}>приложении</a>
+            Копи и трать баллы в нашем приложении
           </p>
         </div>
 

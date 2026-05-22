@@ -256,26 +256,7 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                             </span>
                         </div>
 
-                        {/* Бонусные баллы */}
-                        {isLoggedIn && user ? (
-                            <div className="flex items-center gap-2 p-3 mb-3 rounded-lg border border-primary/25 bg-primary/5 text-sm">
-                                <span>🎁</span>
-                                <span className="text-muted-foreground">
-                                    Вы получите{' '}
-                                    <span className="font-semibold text-primary">
-                                        +{Math.floor((subtotal + deliveryCost) * 0.05)} бонусных баллов
-                                    </span>{' '}
-                                    после подтверждения оплаты
-                                </span>
-                            </div>
-                        ) : (
-                            <div className="flex items-center gap-2 p-3 mb-3 rounded-lg border border-border bg-muted/40 text-sm text-muted-foreground">
-                                <span>🎁</span>
-                                <span>Войдите в аккаунт, чтобы получать бонусные баллы за заказы</span>
-                            </div>
-                        )}
-
-                        <Button
+<Button
                             className="w-full h-14 text-base font-semibold"
                             onClick={handleOrder}
                             disabled={isFormInvalid || isSubmitting}
