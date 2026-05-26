@@ -43,6 +43,7 @@ export const metadata = {
     images: [{ url: '/logo.jpg', width: 800, height: 600, alt: 'Кафе Уголок Вкуса' }],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  verification: { yandex: '39a88c5ba65fe8f6' },
 }
 
 export default function RootLayout({
