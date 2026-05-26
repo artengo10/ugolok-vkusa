@@ -44,7 +44,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
                 </DialogHeader>
 
                 {/* Увеличиваем контейнер для изображения в модалке */}
-                <div className="w-full h-100 bg-muted rounded-lg mb-4 flex items-center justify-center relative">
+                <div className="w-full h-48 sm:h-72 bg-muted rounded-lg mb-4 flex items-center justify-center relative">
                     {!imageLoaded && !imageError && (
                         <div className="absolute inset-0 bg-muted-foreground/20 animate-pulse rounded-lg"></div>
                     )}
