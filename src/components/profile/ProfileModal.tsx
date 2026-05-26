@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { useAuthStore } from '@/lib/stores/auth-store'
-import { Loader2, User, LogOut, Star } from 'lucide-react'
+import { Loader2, User, LogOut, Star, Trash2 } from 'lucide-react'
 
 const BACKEND = process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : '/api'
 
@@ -23,6 +23,8 @@ export default function ProfileModal({ open, onClose }: Props) {
   const { user, token, logout } = useAuthStore()
   const [profile, setProfile] = useState<ProfileData>({ name: null, phone: null, bonusPoints: 0 })
   const [loading, setLoading] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false)
+  const [deleting, setDeleting] = useState(false)
 
   useEffect(() => {
     if (!open || !token) return
@@ -34,7 +36,25 @@ export default function ProfileModal({ open, onClose }: Props) {
       .finally(() => setLoading(false))
   }, [open, token])
 
+  useEffect(() => {
+    if (!open) setDeleteConfirm(false)
+  }, [open])
+
   const handleLogout = () => { logout(); onClose() }
+
+  const handleDelete = async () => {
+    setDeleting(true)
+    try {
+      await fetch(`${BACKEND}/profile`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      logout()
+      onClose()
+    } catch {
+      setDeleting(false)
+    }
+  }
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
@@ -84,6 +104,27 @@ export default function ProfileModal({ open, onClose }: Props) {
               <LogOut className="mr-2 h-4 w-4" />
               Выйти из аккаунта
             </Button>
+
+            {!deleteConfirm ? (
+              <button
+                onClick={() => setDeleteConfirm(true)}
+                className="text-xs text-muted-foreground hover:text-destructive transition-colors text-center pt-1"
+              >
+                Удалить аккаунт
+              </button>
+            ) : (
+              <div className="border border-destructive/30 rounded-lg px-4 py-3 flex flex-col gap-2">
+                <p className="text-sm text-destructive font-medium">Удалить аккаунт безвозвратно?</p>
+                <div className="flex gap-2">
+                  <Button variant="outline" size="sm" className="flex-1" onClick={() => setDeleteConfirm(false)}>
+                    Отмена
+                  </Button>
+                  <Button variant="destructive" size="sm" className="flex-1" onClick={handleDelete} disabled={deleting}>
+                    {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Trash2 className="mr-1 h-4 w-4" />Удалить</>}
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </DialogContent>
