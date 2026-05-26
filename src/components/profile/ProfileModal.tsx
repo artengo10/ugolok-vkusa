@@ -55,19 +55,18 @@ export default function ProfileModal({ open, onClose }: Props) {
         </div>
 
         {/* Баллы */}
-        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg px-4 py-3 flex flex-col gap-1">
+        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg px-4 py-3 flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <Star className="h-4 w-4 text-amber-500 fill-amber-500 shrink-0" />
             <span className="text-sm font-medium text-amber-800 dark:text-amber-200">
-              Бонусных баллов: <strong>{profile.bonusPoints}</strong>
+              Копить и тратить бонусы можно в приложении
             </span>
           </div>
-          <p className="text-xs text-amber-700 dark:text-amber-400 pl-6">
-            Копить и тратить бонусы можно в нашем приложении:{' '}
-            <a href="https://apps.apple.com/ru/app/id6770677969" target="_blank" rel="noopener noreferrer" className="underline font-semibold hover:opacity-80">App Store</a>
-            {' · '}
-            <a href="https://www.rustore.ru/catalog/app/ru.ugolokvkusa1" target="_blank" rel="noopener noreferrer" className="underline font-semibold hover:opacity-80">RuStore</a>
-          </p>
+          <div className="flex gap-3 pl-6">
+            <a href="https://apps.apple.com/ru/app/id6770677969" target="_blank" rel="noopener noreferrer" className="text-sm font-bold underline text-amber-800 dark:text-amber-200 hover:opacity-80">App Store (iOS)</a>
+            <span className="text-amber-500">·</span>
+            <a href="https://www.rustore.ru/catalog/app/ru.ugolokvkusa1" target="_blank" rel="noopener noreferrer" className="text-sm font-bold underline text-amber-800 dark:text-amber-200 hover:opacity-80">RuStore (Android)</a>
+          </div>
         </div>
 
         {loading ? (

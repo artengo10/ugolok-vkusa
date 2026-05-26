@@ -44,7 +44,7 @@ export default function AppBanner() {
           rel="noopener noreferrer"
           className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
         >
-          App Store
+          App Store (iOS)
         </a>
         <a
           href="https://www.rustore.ru/catalog/app/ru.ugolokvkusa1"
@@ -52,7 +52,7 @@ export default function AppBanner() {
           rel="noopener noreferrer"
           className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
         >
-          RuStore
+          RuStore (Android)
         </a>
       </div>
     </div>
