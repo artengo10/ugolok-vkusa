@@ -225,42 +225,43 @@ export default function Header() {
 
           {/* Правые кнопки */}
           <div className="flex items-center gap-2">
+            {/* Поиск */}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setIsSearchOpen(true)}
+              className="h-11 w-11"
+            >
+              <Search className="h-6 w-6" />
+            </Button>
+
             {/* Профиль */}
             {mounted && isLoggedIn && user ? (
               <Button
                 variant="outline"
                 size="icon"
-                className="h-10 w-10 relative"
+                className="h-11 w-11 relative"
                 onClick={() => setIsProfileOpen(true)}
                 title={user.email}
               >
-                <User className="h-5 w-5 text-primary" />
+                <User className="h-6 w-6 text-primary" />
               </Button>
             ) : (
               <Button
                 variant="outline"
                 size="icon"
-                className="h-10 w-10"
+                className="h-11 w-11"
                 onClick={() => { setAuthTab('login'); setIsAuthOpen(true) }}
                 title="Войти"
               >
-                <User className="h-5 w-5" />
+                <User className="h-6 w-6" />
               </Button>
             )}
 
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setIsSearchOpen(true)}
-              className="h-10 w-10"
-            >
-              <Search className="h-5 w-5" />
-            </Button>
-
             {/* Корзина */}
             <Link href="/cart" className="relative">
-              <Button className="h-10 w-10 relative" size="icon">
-                <ShoppingCart className="h-5 w-5" />
+              <Button className="h-11 w-11 relative" size="icon">
+                <ShoppingCart className="h-6 w-6" />
               </Button>
               {mounted && totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary-foreground text-primary text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border border-primary pointer-events-none">

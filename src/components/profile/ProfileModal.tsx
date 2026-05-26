@@ -63,7 +63,7 @@ export default function ProfileModal({ open, onClose }: Props) {
             </span>
           </div>
           <p className="text-xs text-amber-700 dark:text-amber-400 pl-6">
-            Копи и трать баллы в нашем приложении:{' '}
+            Копить и тратить бонусы можно в нашем приложении:{' '}
             <a href="https://apps.apple.com/ru/app/id6770677969" target="_blank" rel="noopener noreferrer" className="underline font-semibold hover:opacity-80">App Store</a>
             {' · '}
             <a href="https://www.rustore.ru/catalog/app/ru.ugolokvkusa1" target="_blank" rel="noopener noreferrer" className="underline font-semibold hover:opacity-80">RuStore</a>
@@ -81,12 +81,6 @@ export default function ProfileModal({ open, onClose }: Props) {
               <span className="text-sm text-muted-foreground">Имя</span>
               <span className="text-sm font-medium">{profile.name ?? '—'}</span>
             </div>
-            {/* Телефон */}
-            <div className="flex items-center justify-between border rounded-lg px-4 py-3">
-              <span className="text-sm text-muted-foreground">Телефон</span>
-              <span className="text-sm font-medium">{profile.phone ?? '—'}</span>
-            </div>
-
             <Button variant="outline" onClick={handleLogout} className="w-full text-muted-foreground mt-1">
               <LogOut className="mr-2 h-4 w-4" />
               Выйти из аккаунта
