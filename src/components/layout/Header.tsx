@@ -140,15 +140,30 @@ export default function Header() {
                   </nav>
 
                   {/* Скачать приложение */}
-                  <div className="px-4 pb-3">
+                  <div className="px-4 pb-3 flex flex-col gap-2">
                     <a
-                      href="#"
+                      href="https://apps.apple.com/ru/app/id6770677969"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary hover:bg-primary/90 transition-colors"
-                      onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); alert('Приложение скоро появится в App Store!'); }}
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       <Smartphone className="h-5 w-5 text-primary-foreground shrink-0" />
                       <div className="flex flex-col min-w-0">
-                        <span className="text-sm font-semibold text-primary-foreground">Скачать приложение</span>
+                        <span className="text-sm font-semibold text-primary-foreground">App Store (iOS)</span>
+                        <span className="text-xs text-primary-foreground/80">Копи баллы и заказывай быстрее</span>
+                      </div>
+                    </a>
+                    <a
+                      href="https://www.rustore.ru/catalog/app/ru.ugolokvkusa1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary hover:bg-primary/90 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <Smartphone className="h-5 w-5 text-primary-foreground shrink-0" />
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-sm font-semibold text-primary-foreground">RuStore (Android)</span>
                         <span className="text-xs text-primary-foreground/80">Копи баллы и заказывай быстрее</span>
                       </div>
                     </a>

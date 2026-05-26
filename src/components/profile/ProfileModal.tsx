@@ -63,8 +63,10 @@ export default function ProfileModal({ open, onClose }: Props) {
             </span>
           </div>
           <p className="text-xs text-amber-700 dark:text-amber-400 pl-6">
-            Копи и трать баллы в нашем{' '}
-            <a href="#" className="underline font-semibold hover:opacity-80" onClick={(e) => { e.preventDefault(); alert('Приложение скоро появится в App Store!'); }}>приложении</a>
+            Копи и трать баллы в нашем приложении:{' '}
+            <a href="https://apps.apple.com/ru/app/id6770677969" target="_blank" rel="noopener noreferrer" className="underline font-semibold hover:opacity-80">App Store</a>
+            {' · '}
+            <a href="https://www.rustore.ru/catalog/app/ru.ugolokvkusa1" target="_blank" rel="noopener noreferrer" className="underline font-semibold hover:opacity-80">RuStore</a>
           </p>
         </div>
 
