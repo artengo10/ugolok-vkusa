@@ -1,6 +1,6 @@
 'use client'
 
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Coffee, Plus, Minus } from 'lucide-react'
 import { useState } from 'react'
@@ -39,12 +39,10 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle className="text-2xl">{product.name}</DialogTitle>
-                    <DialogDescription>{product.category}</DialogDescription>
+                    <DialogTitle className="text-xl">{product.name}</DialogTitle>
                 </DialogHeader>
 
-                {/* Увеличиваем контейнер для изображения в модалке */}
-                <div className="w-full h-48 sm:h-72 bg-muted rounded-lg mb-4 flex items-center justify-center relative">
+                <div className="w-full h-48 sm:h-72 bg-muted rounded-lg mb-3 flex items-center justify-center relative">
                     {!imageLoaded && !imageError && (
                         <div className="absolute inset-0 bg-muted-foreground/20 animate-pulse rounded-lg"></div>
                     )}
@@ -63,10 +61,10 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
                     )}
                 </div>
 
-                <p className="text-muted-foreground mb-2">{product.description}</p>
+                <p className="text-sm text-muted-foreground mb-2">{product.description}</p>
 
                 {/* Счетчик количества */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-4">
                     <span className="text-lg font-semibold">Количество:</span>
                     <div className="flex items-center gap-3">
                         <Button
