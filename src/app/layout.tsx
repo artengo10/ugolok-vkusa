@@ -9,6 +9,7 @@ import FooterMap from '../components/layout/FooterMap'
 import AppBanner from '../components/layout/AppBanner'
 import JsonLd from '../components/seo/JsonLd'
 import Script from 'next/script'
+import StoreHydration from '../components/layout/StoreHydration'
 
 // Настройка шрифта Comfortaa
 const comfortaa = Comfortaa({
@@ -65,6 +66,7 @@ export default function RootLayout({
         `}</Script>
 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <SearchProvider>
+            <StoreHydration />
             <AppBanner />
             <Header />
             <main className="flex-1">{children}</main>

@@ -30,6 +30,6 @@ export const useAuthStore = create<AuthStore>()(
         set((s) => ({ user: s.user ? { ...s.user, ...patch } : null })),
       logout: () => set({ user: null, token: null, isLoggedIn: false }),
     }),
-    { name: 'ugolok-auth' }
+    { name: 'ugolok-auth', skipHydration: true }
   )
 )

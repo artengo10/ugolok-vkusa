@@ -101,7 +101,7 @@ export const useCartStore = create<CartStore>()(
 
       clearCart: () => {
         showToast.cartCleared();
-                set({ items: [] }); // Также сбрасываем выбранный район
+        set({ items: [], selectedArea: null });
       },
 
       totalPrice: () => {
@@ -150,6 +150,7 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: "cart-storage",
+      skipHydration: true,
     }
   )
 );
