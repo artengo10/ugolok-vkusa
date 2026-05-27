@@ -63,8 +63,7 @@ export default function RootLayout({
           (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
           ym(97400333,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
         `}</Script>
-        <noscript><img src="https://mc.yandex.ru/watch/97400333" style={{position:'absolute',left:'-9999px'}} alt="" /></noscript>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+<ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <SearchProvider>
             <AppBanner />
             <Header />
