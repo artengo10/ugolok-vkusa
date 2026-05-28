@@ -21,7 +21,7 @@ export const saladsProducts: Product[] = [
   {
     id: 29,
     name: "Чабан салат",
-    price: 230,
+    price: 350,
     description: "Традиционный салат с овощами и зеленью",
     category: "salads",
     image: "/images/products/salads/choban-salat.jpg.jpeg",

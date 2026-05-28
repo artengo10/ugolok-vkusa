@@ -21,7 +21,9 @@ import {
 
 const BACKEND = process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : '/api'
 
-// Добавляем константы районов прямо в компонент
+const PROMO_PIZZA_IDS = [44, 45, 46, 47, 48]
+const PROMO_FREE_ITEM = { id: 9999, name: 'Мини-пицца (акция 🎁)', price: 0 }
+
 const DELIVERY_AREAS = [
     { id: 'sormovo', name: 'Сормовский район', price: 1500 },
     { id: 'moscow', name: 'Московский район', price: 1750 },
@@ -47,6 +49,12 @@ export default function Cart({ open, onOpenChange }: CartProps) {
 
     const { items, totalPrice, clearCart, calculatePrepayment, selectedArea, setDeliveryArea } = useCartStore()
     const { token, user, isLoggedIn } = useAuthStore()
+
+    const pizzaCount = items
+        .filter(i => PROMO_PIZZA_IDS.includes(i.id))
+        .reduce((sum, i) => sum + i.quantity, 0)
+    const freePizzaCount = Math.floor(pizzaCount / 2)
+
     const subtotal = totalPrice()
     const deliveryCost = orderType === 'delivery' && selectedArea ? selectedArea.price : 0
     const prepayment = calculatePrepayment(orderType, subtotal)
@@ -104,7 +112,10 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                     address: formData.address || undefined,
                     district: selectedArea?.name || undefined,
                     pickupTime: formData.pickupTime || undefined,
-                    items: items.map(i => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity })),
+                    items: [
+                        ...items.map(i => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity })),
+                        ...(freePizzaCount > 0 ? [{ ...PROMO_FREE_ITEM, quantity: freePizzaCount }] : []),
+                    ],
                     delivery: deliveryCost,
                     prepayment,
                     source: 'website',
@@ -191,6 +202,16 @@ export default function Cart({ open, onOpenChange }: CartProps) {
                         <div className="border-t pt-4">
                             <h3 className="font-semibold mb-2 text-base sm:text-lg">Товары в заказе</h3>
                             <CartItemsList />
+                            {freePizzaCount > 0 && (
+                                <div className="mt-3 flex items-center gap-3 p-3 rounded-lg border border-green-500/40 bg-green-500/10">
+                                    <span className="text-2xl">🎁</span>
+                                    <div className="flex-1">
+                                        <p className="text-sm font-semibold text-green-400">Мини-пицца бесплатно! ×{freePizzaCount}</p>
+                                        <p className="text-xs text-green-500/70 mt-0.5">При покупке 2 пицц — 1 мини-пицца в подарок</p>
+                                    </div>
+                                    <span className="text-sm font-bold text-green-400">0 ₽</span>
+                                </div>
+                            )}
 
                             {/* Блок с предоплатой */}
                             {prepayment > 0 && (

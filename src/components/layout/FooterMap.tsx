@@ -24,6 +24,8 @@ export default function FooterMap() {
             return
         }
 
+        if (document.querySelector('script[src*="api-maps.yandex.ru"]')) return
+
         const script = document.createElement('script')
         script.src = 'https://api-maps.yandex.ru/2.1/?apikey=57a04b0e-9c7d-4756-9ae3-7618d0469620&lang=ru_RU'
         script.async = true
@@ -38,7 +40,7 @@ export default function FooterMap() {
             console.error('Failed to load Yandex Maps')
         }
         document.head.appendChild(script)
-    }, [])
+    }, [pathname])
 
     const initMap = () => {
         const mapContainer = document.getElementById('footer-map')

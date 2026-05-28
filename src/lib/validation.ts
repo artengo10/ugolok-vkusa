@@ -6,8 +6,7 @@ export const MAX_DAILY_ORDERS = 5;
 
 // Валидация номера телефона (10-11 цифр)
 export const isValidPhone = (phone: string): boolean => {
-  const cleaned = phone.replace(/\D/g, "");
-  return cleaned.length >= 10 && cleaned.length <= 11;
+  return phone.trim().length > 0;
 };
 
 // Форматирование номера в единый формат
